@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin
+Disallow: /setup-server
+
+Sitemap: https://ehlikeyfkas.com/sitemap.xml

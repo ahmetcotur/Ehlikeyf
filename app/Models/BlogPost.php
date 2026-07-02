@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
+
+class BlogPost extends Model
+{
+    use HasTranslations;
+
+    protected $guarded = [];
+
+    public $translatable = ['title', 'slug', 'description', 'content'];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+        'published_at' => 'datetime',
+    ];
+}

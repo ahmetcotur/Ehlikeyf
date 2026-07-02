@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('menu_items', function (Blueprint $table) {
+            $table->boolean('is_vegan')->default(false)->after('price');
+            $table->json('allergen_info')->nullable()->after('is_vegan');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('menu_items', function (Blueprint $table) {
+            $table->dropColumn(['is_vegan', 'allergen_info']);
+        });
+    }
+};

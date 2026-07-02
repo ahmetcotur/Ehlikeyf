@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Montserrat', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Cinzel', Georgia, serif;
+    --font-accent: 'Playfair Display', Georgia, serif;
+
+    --color-brand-light: #F3E6D0; /* Cream */
+    --color-brand: #D9B04A; /* Antique Gold */
+    --color-brand-dark: #3B2B22; /* Dark Wood */
+    --color-brand-accent: #A86A34; /* Copper */
+    --color-brand-olive: #253126; /* Deep Olive Green */
+}
+
+body {
+    background-color: var(--color-brand-light);
+    color: var(--color-brand-dark);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
