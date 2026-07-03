@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             $this->call([
                 MeyhaneMenuSeeder::class,
                 SettingSeeder::class,
+                GallerySeeder::class,
             ]);
         }
     }

@@ -74,8 +74,8 @@ class MenuSeeder extends Seeder
         $catAnaYemekler = Category::create(['parent_id' => $foodCat->id, 'name' => ['en' => 'Main Courses', 'tr' => 'Ana Yemekler'], 'order_column' => 3, 'is_active' => true]);
         $this->seedItems($catAnaYemekler->id, [
             ['tr' => 'AHTAPOT IZGARA', 'en' => 'Grilled Octopus', 'price' => 1100],
-            ['tr' => 'ELİA SPECİAL SOSLU AHTAPOT', 'en' => 'Elia Special Octopus with Sauce', 'price' => 900],
-            ['tr' => 'ELIA SPECİAL ÇİPURA FİLETO', 'en' => 'Elia Special Sea Bream Fillet', 'price' => 900],
+            ['tr' => 'EHLİKEYF SPECİAL SOSLU AHTAPOT', 'en' => 'Ehlikeyf Special Octopus with Sauce', 'price' => 900],
+            ['tr' => 'EHLİKEYF SPECİAL ÇİPURA FİLETO', 'en' => 'Ehlikeyf Special Sea Bream Fillet', 'price' => 900],
             ['tr' => 'CİPURA IZGARA', 'en' => 'Grilled Sea Bream', 'price' => 700],
             ['tr' => 'LEVREK IZGARA', 'en' => 'Grilled Sea Bass', 'price' => 700],
             ['tr' => 'SOMON', 'en' => 'Salmon', 'price' => 850],

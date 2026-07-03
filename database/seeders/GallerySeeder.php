@@ -25,8 +25,8 @@ class GallerySeeder extends Seeder
 
             $image->setTranslation('title', 'en', 'Gallery Image ' . $order);
             $image->setTranslation('title', 'tr', 'Galeri Görseli ' . $order);
-            $image->setTranslation('alt_text', 'en', 'Elia Restaurant ' . $title);
-            $image->setTranslation('alt_text', 'tr', 'Elia Restaurant ' . $title);
+            $image->setTranslation('alt_text', 'en', 'Ehl-i Keyf Meyhanesi ' . $title);
+            $image->setTranslation('alt_text', 'tr', 'Ehl-i Keyf Meyhanesi ' . $title);
             $image->save();
         }
     }
