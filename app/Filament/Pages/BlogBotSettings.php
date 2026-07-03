@@ -131,12 +131,16 @@ class BlogBotSettings extends Page implements HasForms
         // Force save current settings first
         $this->saveSettings();
 
-        // Check if Gemini API key exists
-        $savedKey = Setting::where('key', 'gemini_api_key')->first();
-        if (!$savedKey || empty($savedKey->value)) {
+        // Check if active API key exists
+        $provider = Setting::getValue('ai_provider', 'gemini');
+        $apiKey = $provider === 'openrouter' 
+            ? Setting::getValue('openrouter_api_key') 
+            : Setting::getValue('gemini_api_key');
+
+        if (empty($apiKey)) {
             Notification::make()
-                ->title('Gemini API Key Eksik!')
-                ->body('Blog yazabilmek için "Dil Ekle & AI Çeviri" sayfasından geçerli bir Gemini API Key kaydetmiş olmalısınız.')
+                ->title('AI API Key Eksik!')
+                ->body('Blog yazabilmek için "Dil Ekle & AI Çeviri" sayfasından geçerli bir API Key kaydetmiş olmalısınız.')
                 ->danger()
                 ->send();
             return;

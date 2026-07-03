@@ -8,11 +8,23 @@ use Illuminate\Support\Str;
 
 class AiTranslationService
 {
-    protected string $apiKey;
+    protected ?string $provider = null;
+    protected ?string $apiKey = null;
+    protected ?string $model = null;
 
-    public function __construct(string $apiKey)
+    public function __construct(?string $apiKey = null, ?string $provider = null, ?string $model = null)
     {
-        $this->apiKey = $apiKey;
+        $this->provider = $provider ?: \App\Models\Setting::getValue('ai_provider', 'gemini');
+        
+        if ($apiKey) {
+            $this->apiKey = $apiKey;
+        } else {
+            $this->apiKey = $this->provider === 'openrouter' 
+                ? \App\Models\Setting::getValue('openrouter_api_key') 
+                : \App\Models\Setting::getValue('gemini_api_key');
+        }
+
+        $this->model = $model ?: \App\Models\Setting::getValue('openrouter_model', 'google/gemini-2.5-flash');
     }
 
     /**
@@ -31,29 +43,51 @@ class AiTranslationService
             $prompt .= "Return ONLY a valid JSON object matching the exact keys and structures of the input. Do not include markdown code block markers (like ```json) or explanation text. Only output the raw JSON string.\n";
             $prompt .= "Input JSON:\n" . json_encode($strings, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
-            $response = Http::withHeaders([
-                'Content-Type' => 'application/json',
-            ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . $this->apiKey, [
-                'contents' => [
-                    [
-                        'parts' => [
-                            ['text' => $prompt]
-                        ]
-                    ]
-                ],
-                'generationConfig' => [
-                    'responseMimeType' => 'application/json',
-                ]
-            ]);
+            if ($this->provider === 'openrouter') {
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . $this->apiKey,
+                    'Content-Type' => 'application/json',
+                ])->post("https://openrouter.ai/api/v1/chat/completions", [
+                    'model' => $this->model ?: 'google/gemini-2.5-flash',
+                    'messages' => [
+                        ['role' => 'user', 'content' => $prompt]
+                    ],
+                    'response_format' => ['type' => 'json_object']
+                ]);
 
-            if ($response->failed()) {
-                Log::error("Gemini Translation API request failed: " . $response->body());
-                throw new \Exception("Gemini API error: " . ($response->json('error.message') ?? 'Unknown error'));
+                if ($response->failed()) {
+                    Log::error("OpenRouter Translation API request failed: " . $response->body());
+                    throw new \Exception("OpenRouter API error: " . ($response->json('error.message') ?? 'Unknown error'));
+                }
+
+                $resultText = $response->json('choices.0.message.content');
+            } else {
+                // Gemini API
+                $response = Http::withHeaders([
+                    'Content-Type' => 'application/json',
+                ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . $this->apiKey, [
+                    'contents' => [
+                        [
+                            'parts' => [
+                                ['text' => $prompt]
+                            ]
+                        ]
+                    ],
+                    'generationConfig' => [
+                        'responseMimeType' => 'application/json',
+                    ]
+                ]);
+
+                if ($response->failed()) {
+                    Log::error("Gemini Translation API request failed: " . $response->body());
+                    throw new \Exception("Gemini API error: " . ($response->json('error.message') ?? 'Unknown error'));
+                }
+
+                $resultText = $response->json('candidates.0.content.parts.0.text');
             }
 
-            $resultText = $response->json('candidates.0.content.parts.0.text');
             if (empty($resultText)) {
-                throw new \Exception("Empty response from Gemini translation model.");
+                throw new \Exception("Empty response from translation model.");
             }
 
             $decoded = json_decode(trim($resultText), true);
@@ -64,7 +98,7 @@ class AiTranslationService
                 $decoded = json_decode(trim($cleanText), true);
 
                 if (!is_array($decoded)) {
-                    Log::error("Failed to parse Gemini translation output as JSON. Raw output: " . $resultText);
+                    Log::error("Failed to parse translation output as JSON. Raw output: " . $resultText);
                     throw new \Exception("Failed to decode translation JSON from AI response.");
                 }
             }

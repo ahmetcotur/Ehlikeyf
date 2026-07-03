@@ -11,18 +11,21 @@ use Illuminate\Support\Str;
 
 class BlogGeneratorService
 {
+    protected ?string $provider;
     protected ?string $apiKey;
+    protected ?string $model;
 
     public function __construct()
     {
-        // Load API key from settings
-        $savedKey = Setting::where('key', 'gemini_api_key')->first();
-        if ($savedKey) {
-            $translations = $savedKey->getTranslations('value');
-            $this->apiKey = $translations['en'] ?? $translations['tr'] ?? $savedKey->value ?? null;
+        $this->provider = Setting::getValue('ai_provider', 'gemini');
+        
+        if ($this->provider === 'openrouter') {
+            $this->apiKey = Setting::getValue('openrouter_api_key');
         } else {
-            $this->apiKey = null;
+            $this->apiKey = Setting::getValue('gemini_api_key');
         }
+        
+        $this->model = Setting::getValue('openrouter_model', 'google/gemini-2.5-flash');
     }
 
     /**
@@ -31,7 +34,7 @@ class BlogGeneratorService
     public function generateAndSavePost(string $topics, string $tone): BlogPost
     {
         if (empty($this->apiKey)) {
-            throw new \Exception("Gemini API Key is not set in Settings.");
+            throw new \Exception("AI API Key is not set in Settings.");
         }
 
         Log::info("Starting AI Blog Generation. Topics: {$topics}, Tone: {$tone}");
@@ -50,29 +53,50 @@ class BlogGeneratorService
         $prompt .= "  \"content\": \"The full blog article content in rich HTML.\"\n";
         $prompt .= "}";
 
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-        ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . $this->apiKey, [
-            'contents' => [
-                [
-                    'parts' => [
-                        ['text' => $prompt]
-                    ]
-                ]
-            ],
-            'generationConfig' => [
-                'responseMimeType' => 'application/json',
-            ]
-        ]);
+        if ($this->provider === 'openrouter') {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $this->apiKey,
+                'Content-Type' => 'application/json',
+            ])->post("https://openrouter.ai/api/v1/chat/completions", [
+                'model' => $this->model ?: 'google/gemini-2.5-flash',
+                'messages' => [
+                    ['role' => 'user', 'content' => $prompt]
+                ],
+                'response_format' => ['type' => 'json_object']
+            ]);
 
-        if ($response->failed()) {
-            Log::error("Gemini Blog Generator failed: " . $response->body());
-            throw new \Exception("Gemini API error: " . ($response->json('error.message') ?? 'Unknown error'));
+            if ($response->failed()) {
+                Log::error("OpenRouter Blog Generator failed: " . $response->body());
+                throw new \Exception("OpenRouter API error: " . ($response->json('error.message') ?? 'Unknown error'));
+            }
+
+            $resultText = $response->json('choices.0.message.content');
+        } else {
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+            ])->post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . $this->apiKey, [
+                'contents' => [
+                    [
+                        'parts' => [
+                            ['text' => $prompt]
+                        ]
+                    ]
+                ],
+                'generationConfig' => [
+                    'responseMimeType' => 'application/json',
+                ]
+            ]);
+
+            if ($response->failed()) {
+                Log::error("Gemini Blog Generator failed: " . $response->body());
+                throw new \Exception("Gemini API error: " . ($response->json('error.message') ?? 'Unknown error'));
+            }
+
+            $resultText = $response->json('candidates.0.content.parts.0.text');
         }
 
-        $resultText = $response->json('candidates.0.content.parts.0.text');
         if (empty($resultText)) {
-            throw new \Exception("Empty response from Gemini blog generator model.");
+            throw new \Exception("Empty response from blog generator model.");
         }
 
         $decoded = json_decode(trim($resultText), true);
@@ -82,7 +106,7 @@ class BlogGeneratorService
             $decoded = json_decode(trim($cleanText), true);
 
             if (!is_array($decoded)) {
-                Log::error("Failed to parse Gemini blog generation output as JSON. Raw output: " . $resultText);
+                Log::error("Failed to parse blog generation output as JSON. Raw output: " . $resultText);
                 throw new \Exception("Failed to decode blog content JSON from AI response.");
             }
         }
@@ -111,7 +135,7 @@ class BlogGeneratorService
 
         // 3. Automatically translate to other active languages in the system
         $locales = config('laravellocalization.supportedLocales') ?? [];
-        $translator = new AiTranslationService($this->apiKey);
+        $translator = new AiTranslationService($this->apiKey, $this->provider, $this->model);
 
         foreach ($locales as $code => $properties) {
             if ($code === 'tr') {

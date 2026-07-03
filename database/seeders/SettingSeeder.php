@@ -184,6 +184,30 @@ class SettingSeeder extends Seeder
                 'type' => 'image',
                 'group' => 'branding',
             ],
+            [
+                'key' => 'ai_provider',
+                'value' => ['tr' => 'gemini', 'en' => 'gemini'],
+                'type' => 'text',
+                'group' => 'general',
+            ],
+            [
+                'key' => 'gemini_api_key',
+                'value' => ['tr' => '', 'en' => ''],
+                'type' => 'text',
+                'group' => 'general',
+            ],
+            [
+                'key' => 'openrouter_api_key',
+                'value' => ['tr' => '', 'en' => ''],
+                'type' => 'text',
+                'group' => 'general',
+            ],
+            [
+                'key' => 'openrouter_model',
+                'value' => ['tr' => 'google/gemini-2.5-flash', 'en' => 'google/gemini-2.5-flash'],
+                'type' => 'text',
+                'group' => 'general',
+            ],
         ];
 
         foreach ($settings as $setting) {

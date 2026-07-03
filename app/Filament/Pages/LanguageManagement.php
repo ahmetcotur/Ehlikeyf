@@ -41,7 +41,10 @@ class LanguageManagement extends Page implements HasForms
     public ?string $name = '';
     public ?string $native = '';
     public ?string $regional = '';
+    public ?string $ai_provider = 'gemini';
     public ?string $gemini_api_key = '';
+    public ?string $openrouter_api_key = '';
+    public ?string $openrouter_model = 'google/gemini-2.5-flash';
     public bool $translate_database = true;
     public bool $translate_json = true;
 
@@ -68,12 +71,24 @@ class LanguageManagement extends Page implements HasForms
         $this->native = $defaultPreset['native'];
         $this->regional = $defaultPreset['regional'];
 
-        // Load Gemini API key from Settings if available
+        // Load AI Settings
+        $savedProvider = Setting::where('key', 'ai_provider')->first();
+        $this->ai_provider = $savedProvider ? $savedProvider->value : 'gemini';
+
         $savedKey = Setting::where('key', 'gemini_api_key')->first();
         if ($savedKey) {
             $translations = $savedKey->getTranslations('value');
             $this->gemini_api_key = $translations['en'] ?? $translations['tr'] ?? $savedKey->value ?? '';
         }
+
+        $savedOrKey = Setting::where('key', 'openrouter_api_key')->first();
+        if ($savedOrKey) {
+            $translations = $savedOrKey->getTranslations('value');
+            $this->openrouter_api_key = $translations['en'] ?? $translations['tr'] ?? $savedOrKey->value ?? '';
+        }
+
+        $savedOrModel = Setting::where('key', 'openrouter_model')->first();
+        $this->openrouter_model = $savedOrModel ? $savedOrModel->value : 'google/gemini-2.5-flash';
 
         $this->form->fill([
             'preset' => 'de',
@@ -81,7 +96,10 @@ class LanguageManagement extends Page implements HasForms
             'name' => $this->name,
             'native' => $this->native,
             'regional' => $this->regional,
+            'ai_provider' => $this->ai_provider,
             'gemini_api_key' => $this->gemini_api_key,
+            'openrouter_api_key' => $this->openrouter_api_key,
+            'openrouter_model' => $this->openrouter_model,
             'translate_database' => true,
             'translate_json' => true,
         ]);
@@ -157,12 +175,38 @@ class LanguageManagement extends Page implements HasForms
                                     ->label('Sabit Arayüz Metinlerini Çevir (Giriş Butonları, İletişim Formları, Çerez Uyarıları vb.)')
                                     ->default(true),
                             ]),
+                        Select::make('ai_provider')
+                            ->label('AI Sağlayıcı (Provider)')
+                            ->options([
+                                'gemini' => 'Google Gemini API',
+                                'openrouter' => 'OpenRouter API',
+                            ])
+                            ->default('gemini')
+                            ->required()
+                            ->live()
+                            ->columnSpanFull(),
                         TextInput::make('gemini_api_key')
                             ->label('Gemini API Key')
                             ->placeholder('Yapay Zeka çevirisi için Gemini API Key gereklidir')
                             ->password()
-                            ->required(fn () => $this->translate_database || $this->translate_json)
-                            ->helperText('Gemini API Key ayarlar veritabanına güvenli şekilde kaydedilecektir.')
+                            ->required(fn (\Filament\Forms\Get $get) => ($get('translate_database') || $get('translate_json')) && $get('ai_provider') === 'gemini')
+                            ->visible(fn (\Filament\Forms\Get $get) => $get('ai_provider') === 'gemini')
+                            ->helperText('Gemini API Key ayarlar veritabanına kaydedilecektir.')
+                            ->columnSpanFull(),
+                        TextInput::make('openrouter_api_key')
+                            ->label('OpenRouter API Key')
+                            ->placeholder('OpenRouter API Key girin (sk-or-...)')
+                            ->password()
+                            ->required(fn (\Filament\Forms\Get $get) => ($get('translate_database') || $get('translate_json')) && $get('ai_provider') === 'openrouter')
+                            ->visible(fn (\Filament\Forms\Get $get) => $get('ai_provider') === 'openrouter')
+                            ->helperText('OpenRouter API Key ayarlar veritabanına kaydedilecektir.')
+                            ->columnSpanFull(),
+                        TextInput::make('openrouter_model')
+                            ->label('OpenRouter Model')
+                            ->placeholder('Model adını girin (Örn: google/gemini-2.5-flash veya meta-llama/llama-3-8b-instruct:free)')
+                            ->required(fn (\Filament\Forms\Get $get) => ($get('translate_database') || $get('translate_json')) && $get('ai_provider') === 'openrouter')
+                            ->visible(fn (\Filament\Forms\Get $get) => $get('ai_provider') === 'openrouter')
+                            ->helperText('Hangi modeli kullanacağınızı seçin. Desteklenen modeller için OpenRouter dokümantasyonuna bakın.')
                             ->columnSpanFull(),
                     ])
             ]);
@@ -175,7 +219,12 @@ class LanguageManagement extends Page implements HasForms
         $name = trim($state['name']);
         $native = trim($state['native']);
         $regional = trim($state['regional']);
-        $apiKey = trim($state['gemini_api_key'] ?? '');
+        
+        $provider = $state['ai_provider'] ?? 'gemini';
+        $apiKey = $provider === 'openrouter'
+            ? trim($state['openrouter_api_key'] ?? '')
+            : trim($state['gemini_api_key'] ?? '');
+        $orModel = trim($state['openrouter_model'] ?? 'google/gemini-2.5-flash');
 
         // Check if language already exists
         if (array_key_exists($code, $this->activeLocales)) {
@@ -186,19 +235,44 @@ class LanguageManagement extends Page implements HasForms
             return;
         }
 
-        // Save Gemini API key
-        if (!empty($apiKey)) {
-            Setting::updateOrCreate(
-                ['key' => 'gemini_api_key'],
-                [
-                    'type' => 'text',
-                    'group' => 'general',
-                    'value' => [
-                        'tr' => $apiKey,
-                        'en' => $apiKey,
+        // Save AI settings
+        Setting::updateOrCreate(
+            ['key' => 'ai_provider'],
+            ['type' => 'text', 'group' => 'general', 'value' => $provider]
+        );
+
+        if ($provider === 'openrouter') {
+            if (!empty($apiKey)) {
+                Setting::updateOrCreate(
+                    ['key' => 'openrouter_api_key'],
+                    [
+                        'type' => 'text',
+                        'group' => 'general',
+                        'value' => [
+                            'tr' => $apiKey,
+                            'en' => $apiKey,
+                        ]
                     ]
-                ]
+                );
+            }
+            Setting::updateOrCreate(
+                ['key' => 'openrouter_model'],
+                ['type' => 'text', 'group' => 'general', 'value' => $orModel]
             );
+        } else {
+            if (!empty($apiKey)) {
+                Setting::updateOrCreate(
+                    ['key' => 'gemini_api_key'],
+                    [
+                        'type' => 'text',
+                        'group' => 'general',
+                        'value' => [
+                            'tr' => $apiKey,
+                            'en' => $apiKey,
+                        ]
+                    ]
+                );
+            }
         }
 
         // 1. Add to active_locales.json
@@ -224,14 +298,14 @@ class LanguageManagement extends Page implements HasForms
         if ($state['translate_database'] || $state['translate_json']) {
             if (empty($apiKey)) {
                 Notification::make()
-                    ->title('Gemini API Key eksik!')
+                    ->title('API Key eksik!')
                     ->danger()
                     ->send();
                 return;
             }
 
             try {
-                $translator = new AiTranslationService($apiKey);
+                $translator = new AiTranslationService($apiKey, $provider, $orModel);
 
                 // --- ARAYÜZ METİNLERİ (JSON) ÇEVİRİSİ ---
                 if ($state['translate_json']) {
