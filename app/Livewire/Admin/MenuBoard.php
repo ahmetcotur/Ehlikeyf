@@ -324,6 +324,12 @@ class MenuBoard extends Component implements HasForms, HasActions
                 Textarea::make('description')
                     ->label('Description (' . strtoupper($this->activeLocale) . ')')
                     ->rows(2),
+                FileUpload::make('image')
+                    ->label('tr' === $this->activeLocale ? 'Kategori Görseli' : 'Category Image')
+                    ->image()
+                    ->directory('categories')
+                    ->disk('public')
+                    ->imageEditor(),
                 Toggle::make('is_active')
                     ->default(true),
             ])
@@ -333,6 +339,7 @@ class MenuBoard extends Component implements HasForms, HasActions
                     'name' => $cat->getTranslation('name', $this->activeLocale),
                     'slug' => $cat->getTranslation('slug', $this->activeLocale),
                     'description' => $cat->getTranslation('description', $this->activeLocale),
+                    'image' => $cat->image,
                     'is_active' => $cat->is_active,
                 ];
             })
@@ -342,6 +349,7 @@ class MenuBoard extends Component implements HasForms, HasActions
                     $cat->setTranslation('name', $this->activeLocale, $data['name']);
                     $cat->setTranslation('slug', $this->activeLocale, $data['slug']);
                     $cat->setTranslation('description', $this->activeLocale, $data['description']);
+                    $cat->image = $data['image'];
                     $cat->is_active = $data['is_active'];
                     $cat->save();
 
@@ -387,6 +395,12 @@ class MenuBoard extends Component implements HasForms, HasActions
                 Textarea::make('description')
                     ->label('Açıklama (' . strtoupper($this->activeLocale) . ')')
                     ->rows(2),
+                FileUpload::make('image')
+                    ->label('tr' === $this->activeLocale ? 'Kategori Görseli' : 'Category Image')
+                    ->image()
+                    ->directory('categories')
+                    ->disk('public')
+                    ->imageEditor(),
                 Toggle::make('is_active')
                     ->label('Aktif')
                     ->default(true),
@@ -399,6 +413,7 @@ class MenuBoard extends Component implements HasForms, HasActions
                 if (isset($data['description'])) {
                     $cat->setTranslation('description', $this->activeLocale, $data['description']);
                 }
+                $cat->image = $data['image'] ?? null;
                 $cat->is_active = $data['is_active'];
                 $cat->order_column = Category::where('parent_id', $this->selectedMainCategoryId)->max('order_column') + 1;
                 $cat->save();
@@ -594,6 +609,12 @@ class MenuBoard extends Component implements HasForms, HasActions
                 TextInput::make('name')
                     ->label('Üst Menü Adı (' . strtoupper($this->activeLocale) . ')')
                     ->required(),
+                FileUpload::make('image')
+                    ->label('tr' === $this->activeLocale ? 'Kategori Görseli (Geniş / Yatay)' : 'Category Image (Wide)')
+                    ->image()
+                    ->directory('categories')
+                    ->disk('public')
+                    ->imageEditor(),
                 Toggle::make('is_active')
                     ->label('Aktif')
                     ->default(true),
@@ -603,6 +624,7 @@ class MenuBoard extends Component implements HasForms, HasActions
                 $cat->parent_id = null;
                 $cat->setTranslation('name', $this->activeLocale, $data['name']);
                 $cat->setTranslation('slug', $this->activeLocale, \Illuminate\Support\Str::slug($data['name']));
+                $cat->image = $data['image'] ?? null;
                 $cat->is_active = $data['is_active'];
                 $cat->order_column = Category::whereNull('parent_id')->max('order_column') + 1;
                 $cat->save();
@@ -625,6 +647,12 @@ class MenuBoard extends Component implements HasForms, HasActions
                 TextInput::make('name')
                     ->label('Üst Menü Adı (' . strtoupper($this->activeLocale) . ')')
                     ->required(),
+                FileUpload::make('image')
+                    ->label('tr' === $this->activeLocale ? 'Kategori Görseli (Geniş / Yatay)' : 'Category Image (Wide)')
+                    ->image()
+                    ->directory('categories')
+                    ->disk('public')
+                    ->imageEditor(),
                 Toggle::make('is_active')
                     ->label('Aktif')
                     ->default(true),
@@ -633,6 +661,7 @@ class MenuBoard extends Component implements HasForms, HasActions
                 $cat = Category::find($this->selectedMainCategoryId);
                 return [
                     'name' => $cat ? $cat->getTranslation('name', $this->activeLocale) : '',
+                    'image' => $cat ? $cat->image : null,
                     'is_active' => $cat ? $cat->is_active : true,
                 ];
             })
@@ -641,6 +670,7 @@ class MenuBoard extends Component implements HasForms, HasActions
                 if ($cat) {
                     $cat->setTranslation('name', $this->activeLocale, $data['name']);
                     $cat->setTranslation('slug', $this->activeLocale, \Illuminate\Support\Str::slug($data['name']));
+                    $cat->image = $data['image'];
                     $cat->is_active = $data['is_active'];
                     $cat->save();
 
