@@ -226,12 +226,27 @@
                         $activeCatSlug = $activeCatData ? ($activeCatData->getTranslation('slug', app()->getLocale()) ?: $activeCatData->getTranslation('slug', 'en')) : '';
                     @endphp
                     
-                    <div class="flex justify-center mb-8">
+                    <div class="flex flex-col items-center gap-6 mb-12">
+                        <!-- Back to List button -->
                         <a href="{{ route('menu') }}" wire:navigate
-                           class="group inline-flex items-center px-6 py-2.5 rounded-full border border-brand-olive/20 bg-white/50 backdrop-blur-sm text-xs font-medium text-brand-olive hover:bg-brand-olive hover:text-white transition-all duration-500 uppercase tracking-[0.2em]">
-                            <svg class="w-4 h-4 mr-2.5 transform group-hover:-translate-x-1 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                           class="group inline-flex items-center px-5 py-2 rounded-full border border-brand-olive/10 bg-white/40 backdrop-blur-sm text-[10px] font-semibold text-brand-olive/70 hover:bg-brand-olive hover:text-white transition-all duration-300 uppercase tracking-[0.2em]">
+                            <svg class="w-3.5 h-3.5 mr-2 transform group-hover:-translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                             {{ __('Back to Menu List') }}
                         </a>
+
+                        <!-- Easy Category Switcher Bar -->
+                        <div class="flex flex-wrap justify-center gap-2 md:gap-3 p-1.5 bg-white/70 backdrop-blur-md rounded-full shadow-sm border border-brand-olive/10 max-w-2xl">
+                            @foreach($categories as $cat)
+                                @php
+                                    $catSlug = $cat->getTranslation('slug', app()->getLocale()) ?: $cat->getTranslation('slug', 'en');
+                                    $isActive = $cat->id === $activeCategory;
+                                @endphp
+                                <a href="{{ route('menu', ['category' => $catSlug]) }}" wire:navigate
+                                   class="px-4 py-2 text-xs md:text-sm font-semibold tracking-wider rounded-full transition-all uppercase {{ $isActive ? 'bg-brand-olive text-white shadow-sm' : 'text-brand-dark hover:text-brand-olive hover:bg-brand-olive/5' }}">
+                                    {{ $cat->name }}
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
 
                     <div class="gsap-fade-in mb-24">
