@@ -274,7 +274,7 @@
                                     @endif
 
                                     @if($item->image)
-                                        <div class="mt-2 rounded-lg overflow-hidden h-28 bg-gray-100 dark:bg-gray-900 border border-gray-150 dark:border-gray-700 relative">
+                                        <div class="mt-2 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-900 border border-gray-150 dark:border-gray-700 relative" style="height: 120px;">
                                             <img src="{{ Storage::url($item->image) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                         </div>
                                     @endif
@@ -294,6 +294,7 @@
                                         <span title="Sürükle Taşı" class="item-handle cursor-grab active:cursor-grabbing text-gray-300 hover:text-amber-500 p-0.5 transition-colors" x-on:click.stop>
                                             <x-heroicon-m-arrows-up-down class="w-4 h-4" />
                                         </span>
+                                    </div>
                                 </div>
                             </div>
                         @empty
@@ -464,7 +465,7 @@
                                     @endif
 
                                     @if($item->image)
-                                        <div class="mt-2 rounded-lg overflow-hidden h-28 bg-gray-105 dark:bg-gray-900 border border-gray-150 dark:border-gray-700 relative">
+                                        <div class="mt-2 rounded-lg overflow-hidden bg-gray-105 dark:bg-gray-900 border border-gray-150 dark:border-gray-700 relative" style="height: 120px;">
                                             <img src="{{ Storage::url($item->image) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                         </div>
                                     @endif
