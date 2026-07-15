@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             // Disable foreign key constraints during import
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
             
-            $sql = File::get_contents($sqlPath);
+            $sql = File::get($sqlPath);
             
             // Execute raw SQL script
             DB::unprepared($sql);
