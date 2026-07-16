@@ -2,14 +2,15 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\BlogPost;
 use Exception;
 use Illuminate\Support\Facades\Log;
+use Livewire\Component;
 
 class BlogFeed extends Component
 {
     public $posts = [];
+
     public $error = false;
 
     public function mount()
@@ -25,28 +26,28 @@ class BlogFeed extends Component
                 ->orderBy('published_at', 'desc')
                 ->take(6)
                 ->get();
-            
+
             $items = [];
             foreach ($dbPosts as $post) {
                 $description = strip_tags((string) $post->description);
                 $description = html_entity_decode($description);
                 if (mb_strlen($description) > 120) {
-                    $description = mb_substr($description, 0, 117) . '...';
+                    $description = mb_substr($description, 0, 117).'...';
                 }
 
                 $items[] = [
                     'title' => $post->title,
-                    'link' => url('/' . $post->slug),
+                    'link' => url('/'.$post->slug),
                     'date' => $post->published_at ? $post->published_at->format('M d, Y') : '',
                     'description' => $description,
-                    'image' => $post->image, 
+                    'image' => $post->image_url,
                 ];
             }
 
             $this->posts = $items;
 
         } catch (Exception $e) {
-            Log::error('BlogFeed Error: ' . $e->getMessage());
+            Log::error('BlogFeed Error: '.$e->getMessage());
             $this->error = true;
             $this->posts = [];
         }

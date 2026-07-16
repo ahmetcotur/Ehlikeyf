@@ -24,8 +24,8 @@
                         
                         <!-- Image Container with aspect ratio -->
                         <div class="aspect-[4/3] overflow-hidden relative border-b border-brand-dark/5">
-                            @if($post->image)
-                                <img src="{{ asset('images/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
+                            @if($post->image_url)
+                                <img src="{{ $post->image_url }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
                             @else
                                 @php
                                     $indexPlaceholders = ['029A0982.jpg', '029A0973.jpg', '029A5151.jpg', '029A5168.jpg', '029A1008.jpg'];

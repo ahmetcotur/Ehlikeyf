@@ -3,25 +3,27 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BlogPostResource\Pages;
-use App\Filament\Resources\BlogPostResource\RelationManagers;
 use App\Models\BlogPost;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Resources\Concerns\Translatable;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class BlogPostResource extends Resource
 {
     use Translatable;
+
     protected static ?string $model = BlogPost::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-right';
+
     protected static ?string $modelLabel = 'Blog Yazısı';
+
     protected static ?string $pluralModelLabel = 'Blog Yazıları';
+
     protected static ?string $navigationGroup = 'Blog Yönetimi';
 
     public static function form(Form $form): Form
@@ -34,7 +36,7 @@ class BlogPostResource extends Resource
                             ->label('Başlık')
                             ->required()
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn ($state, Forms\Set $set) => $set('slug', \Illuminate\Support\Str::slug($state))),
+                            ->afterStateUpdated(fn ($state, Forms\Set $set) => $set('slug', Str::slug($state))),
                         Forms\Components\TextInput::make('slug')
                             ->label('URL Uzantısı')
                             ->required()
@@ -54,6 +56,7 @@ class BlogPostResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Görsel')
                             ->image()
+                            ->disk('public')
                             ->directory('blog')
                             ->imageEditor(),
                         Forms\Components\Grid::make(2)
@@ -75,6 +78,7 @@ class BlogPostResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Görsel')
+                    ->disk('public')
                     ->circular(),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Başlık')

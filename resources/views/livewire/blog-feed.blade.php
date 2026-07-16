@@ -31,7 +31,7 @@
                                     $randomBlogPh = $blogPlaceholders[array_rand($blogPlaceholders)];
                                     $finalImg = asset('images/gallery/' . $randomBlogPh);
                                 } else {
-                                    $finalImg = asset('images/' . $imgSrc);
+                                    $finalImg = $imgSrc;
                                 }
                                 
                                 // Mock reading time (e.g. 3-5 min) based on title length
