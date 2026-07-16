@@ -68,57 +68,13 @@
         </div>
     </div>
 
-    <!-- About Section -->
-    <section class="py-24 md:py-32 bg-[linear-gradient(180deg,#F8F1E7_0%,#EFE2D1_100%)] text-brand-dark px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                <div class="order-2 lg:order-1 relative">
-                    <div class="gsap-fade-in premium-card p-3 rounded-[2rem]">
-                        <div class="aspect-[4/5] overflow-hidden rounded-[1.45rem]">
-                            <img src="{{ \App\Models\Setting::getValue('story_image', asset('storage/gallery/029A7798.webp')) }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Restaurant Atmosphere">
-                        </div>
-                    </div>
-                </div>
-                <div class="order-1 lg:order-2 premium-card rounded-[2rem] p-8 md:p-12">
-                    <h2 class="gsap-fade-in text-brand-olive uppercase tracking-[0.2em] text-sm font-semibold mb-6">{{ __('Our Story') }}</h2>
-                    <h3 class="gsap-fade-in text-3xl md:text-5xl font-serif font-light leading-tight mb-8">{{ __('A premium Mediterranean tavern experience') }}<br><span class="italic text-brand-accent font-sans">{{ __('in the heart of Kaş') }}</span></h3>
-                    <p class="gsap-fade-in text-gray-600 mb-6 leading-relaxed font-light text-lg">
-                        {{ __('Homepage About Text 1') }}
-                    </p>
-                    <p class="gsap-fade-in text-gray-600 mb-10 leading-relaxed font-light text-lg">
-                        {{ __('Homepage About Text 2') }}
-                    </p>
-                    <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'our-story') }}" class="gsap-fade-in inline-flex items-center text-brand-accent uppercase tracking-widest text-sm font-medium hover:text-brand-dark transition-colors group">
-                        {{ __('Read Our Story') }}
-                        <svg class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section (Parallax visual break) -->
-    <section class="relative py-40 overflow-hidden flex items-center justify-center">
-        <div class="absolute inset-0 z-0 gsap-parallax" data-parallax-speed="0.25">
-            @php
-                $parallaxImage = \App\Models\Setting::getValue('parallax_image', asset('storage/gallery/029A8012-HDR.webp'));
-            @endphp
-            <img src="{{ $parallaxImage }}" class="w-full h-full object-cover" alt="Sunset Over Coast">
-            <div class="absolute inset-0 bg-brand-dark/50"></div>
-        </div>
-        <div class="relative z-10 text-center max-w-4xl px-4">
-            <h2 class="gsap-fade-in text-3xl md:text-6xl text-white font-serif font-light mb-6 uppercase tracking-wider">"{{ __('Kaş\'ta meyhanenin en güzel hali.') }}"</h2>
-            <p class="gsap-fade-in text-brand text-lg md:text-2xl font-serif italic tracking-widest">{{ __('Rakının yanına muhabbet bizden.') }}</p>
-        </div>
-    </section>
-
     <!-- Brand Pillars Section -->
-    <section class="py-24 md:py-32 bg-brand-dark text-brand-light px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-brand/10">
+    <section class="py-20 md:py-24 bg-brand-dark text-brand-light px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-brand/10">
         <!-- SVG Pattern Background -->
         <div class="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%235E4A3F\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\' opacity=\'0.1\'%3E%3Cpath d=\'M60 100 C 60 70 45 40 20 20\'/%3E%3Cpath d=\'M60 100 C 65 70 85 40 110 20\'/%3E%3Cellipse cx=\'35\' cy=\'45\' rx=\'10\' ry=\'5\' transform=\'rotate(-35 35 45)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'45\' cy=\'75\' rx=\'8\' ry=\'4\' transform=\'rotate(-45 45 75)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'85\' cy=\'45\' rx=\'10\' ry=\'5\' transform=\'rotate(35 85 45)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'75\' cy=\'75\' rx=\'8\' ry=\'4\' transform=\'rotate(45 75 75)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Ccircle cx=\'60\' cy=\'60\' r=\'4\' fill=\'%235E4A3F\'/%3E%3Ccircle cx=\'55\' cy=\'85\' r=\'3.5\' fill=\'%235E4A3F\'/%3E%3C/g%3E%3C/svg%3E\'); background-size: 120px 120px;"></div>
 
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-20">
+            <div class="text-center mb-14">
                 <h2 class="gsap-fade-in text-brand-olive uppercase tracking-[0.2em] text-sm font-semibold mb-4">{{ __('Concept') }}</h2>
                 <h3 class="gsap-fade-in text-3xl md:text-5xl font-serif font-light leading-tight text-brand-light">{{ __('Ehl-i Keyf Deneyimi') }}</h3>
             </div>
@@ -155,13 +111,13 @@
     </section>
 
     <!-- Culinary Excellence -->
-    <section class="py-24 md:py-32 bg-white text-brand-dark px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section class="py-20 md:py-24 bg-[linear-gradient(180deg,#F8F1E7_0%,#FFFBF4_100%)] text-brand-dark px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <!-- SVG Pattern Background -->
         <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235E4A3F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.1'%3E%3Cpath d='M60 100 C 60 70 45 40 20 20'/%3E%3Cpath d='M60 100 C 65 70 85 40 110 20'/%3E%3Cellipse cx='35' cy='45' rx='10' ry='5' transform='rotate(-35 35 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='45' cy='75' rx='8' ry='4' transform='rotate(-45 45 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='85' cy='45' rx='10' ry='5' transform='rotate(35 85 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='75' cy='75' rx='8' ry='4' transform='rotate(45 75 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%235E4A3F'/%3E%3Ccircle cx='55' cy='85' r='3.5' fill='%235E4A3F'/%3E%3C/g%3E%3C/svg%3E'); background-size: 120px 120px;"></div>
         
         <div class="max-w-7xl mx-auto text-center relative z-10">
             <h2 class="gsap-fade-in text-brand-olive uppercase tracking-[0.2em] text-sm font-semibold mb-4">{{ __('Culinary Excellence') }}</h2>
-            <h3 class="gsap-fade-in text-3xl md:text-5xl font-serif font-light leading-tight mb-16">{{ __('Crafted for the Senses') }}</h3>
+            <h3 class="gsap-fade-in text-3xl md:text-5xl font-serif font-light leading-tight mb-12">{{ __('Crafted for the Senses') }}</h3>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left" data-gsap-stagger>
                 @php
@@ -207,11 +163,57 @@
                 @endforelse
             </div>
             
-            <div class="mt-20">
+            <div class="mt-14">
                 <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'menu') }}" class="gsap-fade-in inline-block px-10 py-4 border border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-colors duration-300 uppercase tracking-widest text-sm rounded-full">{{ __('View Full Menu') }}</a>
             </div>
         </div>
     </section>
+
+    <!-- About Section -->
+    <section class="py-24 md:py-32 bg-[linear-gradient(180deg,#F8F1E7_0%,#EFE2D1_100%)] text-brand-dark px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="gsap-fade-in premium-card p-3 rounded-[2rem]">
+                        <div class="aspect-[4/5] overflow-hidden rounded-[1.45rem]">
+                            <img src="{{ \App\Models\Setting::getValue('story_image', asset('storage/gallery/029A7798.webp')) }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Restaurant Atmosphere">
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 premium-card rounded-[2rem] p-8 md:p-12">
+                    <h2 class="gsap-fade-in text-brand-olive uppercase tracking-[0.2em] text-sm font-semibold mb-6">{{ __('Our Story') }}</h2>
+                    <h3 class="gsap-fade-in text-3xl md:text-5xl font-serif font-light leading-tight mb-8">{{ __('A premium Mediterranean tavern experience') }}<br><span class="italic text-brand-accent font-sans">{{ __('in the heart of Kaş') }}</span></h3>
+                    <p class="gsap-fade-in text-gray-600 mb-6 leading-relaxed font-light text-lg">
+                        {{ __('Homepage About Text 1') }}
+                    </p>
+                    <p class="gsap-fade-in text-gray-600 mb-10 leading-relaxed font-light text-lg">
+                        {{ __('Homepage About Text 2') }}
+                    </p>
+                    <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'our-story') }}" class="gsap-fade-in inline-flex items-center text-brand-accent uppercase tracking-widest text-sm font-medium hover:text-brand-dark transition-colors group">
+                        {{ __('Read Our Story') }}
+                        <svg class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section (Parallax visual break) -->
+    <section class="relative py-40 overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 z-0 gsap-parallax" data-parallax-speed="0.25">
+            @php
+                $parallaxImage = \App\Models\Setting::getValue('parallax_image', asset('storage/gallery/029A8012-HDR.webp'));
+            @endphp
+            <img src="{{ $parallaxImage }}" class="w-full h-full object-cover" alt="Sunset Over Coast">
+            <div class="absolute inset-0 bg-brand-dark/50"></div>
+        </div>
+        <div class="relative z-10 text-center max-w-4xl px-4">
+            <h2 class="gsap-fade-in text-3xl md:text-6xl text-white font-serif font-light mb-6 uppercase tracking-wider">"{{ __('Kaş\'ta meyhanenin en güzel hali.') }}"</h2>
+            <p class="gsap-fade-in text-brand text-lg md:text-2xl font-serif italic tracking-widest">{{ __('Rakının yanına muhabbet bizden.') }}</p>
+        </div>
+    </section>
+
+
 
     <!-- Reviews Section -->
     <section class="py-24 md:py-32 bg-brand-light text-brand-dark px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -219,6 +221,12 @@
         <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235E4A3F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.1'%3E%3Cpath d='M60 100 C 60 70 45 40 20 20'/%3E%3Cpath d='M60 100 C 65 70 85 40 110 20'/%3E%3Cellipse cx='35' cy='45' rx='10' ry='5' transform='rotate(-35 35 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='45' cy='75' rx='8' ry='4' transform='rotate(-45 45 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='85' cy='45' rx='10' ry='5' transform='rotate(35 85 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='75' cy='75' rx='8' ry='4' transform='rotate(45 75 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%235E4A3F'/%3E%3Ccircle cx='55' cy='85' r='3.5' fill='%235E4A3F'/%3E%3C/g%3E%3C/svg%3E'); background-size: 120px 120px;"></div>
 
         <div class="max-w-7xl mx-auto relative z-10 text-center">
+            @php
+                $googlePlaceSummary = \App\Models\GooglePlaceSummary::query()->latest('synced_at')->first();
+                $googleReviewCount = (int) ($googlePlaceSummary?->review_count ?: \App\Models\Setting::getValue('google_review_count', 5894));
+                $googleRating = (float) ($googlePlaceSummary?->rating ?: \App\Models\Setting::getValue('google_rating', 5));
+                $googleSyncedAt = $googlePlaceSummary?->synced_at;
+            @endphp
 
             {{-- Google Reviews Counter Badge --}}
             <div class="gsap-fade-in flex flex-col items-center mb-16">
@@ -242,7 +250,7 @@
 
                     {{-- Animated Counter --}}
                     <div class="flex items-end gap-3">
-                        <span class="text-6xl md:text-7xl font-black text-brand-dark tabular-nums leading-none" id="reviews-counter" data-target="5894">0</span>
+                        <span class="text-6xl md:text-7xl font-black text-brand-dark tabular-nums leading-none" id="reviews-counter" data-target="{{ $googleReviewCount }}">0</span>
                         <div class="flex flex-col items-start pb-2">
                             <div class="flex items-center gap-0.5 mb-1">
                                 @for($i=0; $i<5; $i++)
@@ -250,6 +258,9 @@
                                 @endfor
                             </div>
                             <span class="text-xs text-gray-400 font-medium tracking-wide">Google Yorumu</span>
+                            @if($googleSyncedAt)
+                                <span class="text-[10px] text-gray-400 font-light">Son güncelleme: {{ $googleSyncedAt->timezone(config('app.timezone'))->format('d.m.Y H:i') }}</span>
+                            @endif
                         </div>
                     </div>
 
@@ -294,20 +305,56 @@
 
             {{-- Premium Two-Row Review Marquee with Scroll-Velocity --}}
             @php
-            $reviewsRow1 = [
-                ['text' => 'Tatil için 5 gün Kaş\'a gelip üç gece yemeği Ehl-i Keyf\'te yedik. Mekanın manzarası, haydari ve lakerda müthişti. Personel çok ilgili ve candan. Kesinlikle Kaş\'ın en iyisi.', 'author' => 'Yağmur D.', 'date' => 'Haziran 2025', 'init' => 'YD', 'color' => '#8B7355'],
-                ['text' => 'İçeriye girdiğiniz andan itibaren müziğin etkisi ve personelin sıcaklığıyla kendinizi tamamen bırakıyorsunuz. Mezeler son derece tazeydi, rakı sofrası tam olması gerektiği gibiydi.', 'author' => 'Ahmet K.', 'date' => 'Temmuz 2025', 'init' => 'AK', 'color' => '#6B8E6B'],
-                ['text' => 'Sakin bir atmosferde muhteşem bir meyhane deneyimi yaşadık. Atom, muhammara ve lakerda inanılmaz lezzetliydi. Servis hızlı ve güler yüzlüydü. Kaş\'a gelenler mutlaka uğrasın.', 'author' => 'Aybike B.', 'date' => 'Ağustos 2025', 'init' => 'AB', 'color' => '#A0845C'],
-                ['text' => 'Kaş\'ta onlarca yere gittik ama Ehl-i Keyf bambaşka. Gün batımında deniz manzarasıyla içilen rakı ve taze meze… Bu deneyimi tarif etmek gerçekten çok zor. Yılın en güzel akşamıydı.', 'author' => 'Zümrüt Z.', 'date' => 'Temmuz 2025', 'init' => 'ZZ', 'color' => '#7B6B5D'],
-                ['text' => 'Hizmet, lezzet ve ambiyans açısından kusursuz. Haydari ve deniz mezeleri son derece tazeydi. Personelin samimiyeti insanı eve dönmüş gibi hissettiriyor.', 'author' => 'Özlem H.', 'date' => 'Haziran 2025', 'init' => 'ÖH', 'color' => '#5E4A3F'],
-            ];
-            $reviewsRow2 = [
-                ['text' => 'Ehl-i Keyf\'in ambiyansı ve sunumu gerçekten çok özel. Kalamar tava ve ahtapot muhteşemdi. Sofrada hiçbir şey eksik kalmıyor, personel sürekli ilgileniyor. Tatilimizin en güzel anları burada geçti.', 'author' => 'Ridvan Y.', 'date' => 'Ağustos 2025', 'init' => 'RY', 'color' => '#6B8E6B'],
-                ['text' => 'Mükemmel bir meyhane deneyimi. Taze deniz ürünleri, özenle hazırlanmış mezeler ve sıcak servis… Kaş\'ta bu kalitede mekan bulmak gerçekten nadir. Çevremdeki herkese tavsiye ediyorum.', 'author' => 'Merve S.', 'date' => 'Temmuz 2025', 'init' => 'MS', 'color' => '#A0845C'],
-                ['text' => 'Harika atmosfer, lezzetli mezeler ve güler yüzlü personel. Balık çok tazeydi, meyhane kültürünü yaşatıyorlar. Ehl-i Keyf Kaş seyahatimin en değerli anısı oldu.', 'author' => 'Berk T.', 'date' => 'Haziran 2025', 'init' => 'BT', 'color' => '#7B6B5D'],
-                ['text' => 'Haydari, lakerda ve muhammara enfesti. Manzara inanılmaz, müzik mükemmel. Böyle bir meyhanede akşam geçirmek insanı dinlendiriyor ve ruhunu besliyor. Kesinlikle tekrar geleceğiz.', 'author' => 'Selin A.', 'date' => 'Ağustos 2025', 'init' => 'SA', 'color' => '#8B7355'],
-                ['text' => 'Kaş\'ta en doğru tercih Ehl-i Keyf. Menüdeki her şey özenle hazırlanmış, sunum çok şık. Rakı sofrasına yakışır ortam ve misafirperver personel. Gönülden tavsiye ederim.', 'author' => 'Tarık O.', 'date' => 'Temmuz 2025', 'init' => 'TO', 'color' => '#5E4A3F'],
-            ];
+            $syncedReviewCards = \App\Models\GoogleReview::query()
+                ->where('is_active', true)
+                ->whereNotNull('text')
+                ->where('text', '!=', '')
+                ->orderByDesc('published_at')
+                ->take(10)
+                ->get()
+                ->map(function ($review, $index) {
+                    $colors = ['#8B7355', '#6B8E6B', '#A0845C', '#7B6B5D', '#5E4A3F'];
+                    $name = trim($review->author_name ?: 'Google Kullanıcısı');
+                    $initials = collect(preg_split('/\s+/', $name))
+                        ->filter()
+                        ->take(2)
+                        ->map(fn ($part) => mb_strtoupper(mb_substr($part, 0, 1)))
+                        ->implode('');
+
+                    return [
+                        'text' => $review->text,
+                        'author' => $name,
+                        'date' => $review->relative_time_description ?: optional($review->published_at)->translatedFormat('F Y'),
+                        'init' => $initials ?: 'G',
+                        'color' => $colors[$index % count($colors)],
+                        'rating' => max(1, min(5, (int) $review->rating)),
+                    ];
+                });
+
+            if ($syncedReviewCards->isNotEmpty()) {
+                $splitAt = max(1, (int) ceil($syncedReviewCards->count() / 2));
+                $reviewsRow1 = $syncedReviewCards->take($splitAt)->values()->all();
+                $reviewsRow2 = $syncedReviewCards->slice($splitAt)->values()->all();
+
+                if (empty($reviewsRow2)) {
+                    $reviewsRow2 = $reviewsRow1;
+                }
+            } else {
+                $reviewsRow1 = [
+                    ['text' => 'Tatil için 5 gün Kaş\'a gelip üç gece yemeği Ehl-i Keyf\'te yedik. Mekanın manzarası, haydari ve lakerda müthişti. Personel çok ilgili ve candan. Kesinlikle Kaş\'ın en iyisi.', 'author' => 'Yağmur D.', 'date' => 'Haziran 2025', 'init' => 'YD', 'color' => '#8B7355', 'rating' => 5],
+                    ['text' => 'İçeriye girdiğiniz andan itibaren müziğin etkisi ve personelin sıcaklığıyla kendinizi tamamen bırakıyorsunuz. Mezeler son derece tazeydi, rakı sofrası tam olması gerektiği gibiydi.', 'author' => 'Ahmet K.', 'date' => 'Temmuz 2025', 'init' => 'AK', 'color' => '#6B8E6B', 'rating' => 5],
+                    ['text' => 'Sakin bir atmosferde muhteşem bir meyhane deneyimi yaşadık. Atom, muhammara ve lakerda inanılmaz lezzetliydi. Servis hızlı ve güler yüzlüydü. Kaş\'a gelenler mutlaka uğrasın.', 'author' => 'Aybike B.', 'date' => 'Ağustos 2025', 'init' => 'AB', 'color' => '#A0845C', 'rating' => 5],
+                    ['text' => 'Kaş\'ta onlarca yere gittik ama Ehl-i Keyf bambaşka. Gün batımında deniz manzarasıyla içilen rakı ve taze meze… Bu deneyimi tarif etmek gerçekten çok zor. Yılın en güzel akşamıydı.', 'author' => 'Zümrüt Z.', 'date' => 'Temmuz 2025', 'init' => 'ZZ', 'color' => '#7B6B5D', 'rating' => 5],
+                    ['text' => 'Hizmet, lezzet ve ambiyans açısından kusursuz. Haydari ve deniz mezeleri son derece tazeydi. Personelin samimiyeti insanı eve dönmüş gibi hissettiriyor.', 'author' => 'Özlem H.', 'date' => 'Haziran 2025', 'init' => 'ÖH', 'color' => '#5E4A3F', 'rating' => 5],
+                ];
+                $reviewsRow2 = [
+                    ['text' => 'Ehl-i Keyf\'in ambiyansı ve sunumu gerçekten çok özel. Kalamar tava ve ahtapot muhteşemdi. Sofrada hiçbir şey eksik kalmıyor, personel sürekli ilgileniyor. Tatilimizin en güzel anları burada geçti.', 'author' => 'Ridvan Y.', 'date' => 'Ağustos 2025', 'init' => 'RY', 'color' => '#6B8E6B', 'rating' => 5],
+                    ['text' => 'Mükemmel bir meyhane deneyimi. Taze deniz ürünleri, özenle hazırlanmış mezeler ve sıcak servis… Kaş\'ta bu kalitede mekan bulmak gerçekten nadir. Çevremdeki herkese tavsiye ediyorum.', 'author' => 'Merve S.', 'date' => 'Temmuz 2025', 'init' => 'MS', 'color' => '#A0845C', 'rating' => 5],
+                    ['text' => 'Harika atmosfer, lezzetli mezeler ve güler yüzlü personel. Balık çok tazeydi, meyhane kültürünü yaşatıyorlar. Ehl-i Keyf Kaş seyahatimin en değerli anısı oldu.', 'author' => 'Berk T.', 'date' => 'Haziran 2025', 'init' => 'BT', 'color' => '#7B6B5D', 'rating' => 5],
+                    ['text' => 'Haydari, lakerda ve muhammara enfesti. Manzara inanılmaz, müzik mükemmel. Böyle bir meyhanede akşam geçirmek insanı dinlendiriyor ve ruhunu besliyor. Kesinlikle tekrar geleceğiz.', 'author' => 'Selin A.', 'date' => 'Ağustos 2025', 'init' => 'SA', 'color' => '#8B7355', 'rating' => 5],
+                    ['text' => 'Kaş\'ta en doğru tercih Ehl-i Keyf. Menüdeki her şey özenle hazırlanmış, sunum çok şık. Rakı sofrasına yakışır ortam ve misafirperver personel. Gönülden tavsiye ederim.', 'author' => 'Tarık O.', 'date' => 'Temmuz 2025', 'init' => 'TO', 'color' => '#5E4A3F', 'rating' => 5],
+                ];
+            }
             @endphp
 
             <div id="reviews-marquee-container" class="space-y-6">
@@ -323,7 +370,7 @@
                                     {{-- Header: stars + Google --}}
                                     <div class="flex items-center justify-between">
                                         <div class="flex gap-0.5">
-                                            @for($s=0;$s<5;$s++)<svg class="w-4 h-4 fill-current" style="color:#D4A853;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>@endfor
+                                            @for($s=0;$s<($review['rating'] ?? 5);$s++)<svg class="w-4 h-4 fill-current" style="color:#D4A853;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>@endfor
                                         </div>
                                         <svg class="w-[52px] h-[18px] opacity-40" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg"><path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/><path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/><path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/><path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/><path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/><path d="M35.29 41.19V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91S16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49-.21z" fill="#4285F4"/></svg>
                                     </div>
@@ -361,7 +408,7 @@
                                 <div class="p-7 flex flex-col gap-4 h-full">
                                     <div class="flex items-center justify-between">
                                         <div class="flex gap-0.5">
-                                            @for($s=0;$s<5;$s++)<svg class="w-4 h-4 fill-current" style="color:#D4A853;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>@endfor
+                                            @for($s=0;$s<($review['rating'] ?? 5);$s++)<svg class="w-4 h-4 fill-current" style="color:#D4A853;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>@endfor
                                         </div>
                                         <svg class="w-[52px] h-[18px] opacity-40" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg"><path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/><path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/><path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/><path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/><path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/><path d="M35.29 41.19V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91S16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49-.21z" fill="#4285F4"/></svg>
                                     </div>
