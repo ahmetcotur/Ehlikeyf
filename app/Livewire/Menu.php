@@ -84,6 +84,10 @@ class Menu extends Component
 
     public function formatPrice($priceInTry)
     {
+        if ($priceInTry === null || (float) $priceInTry <= 0) {
+            return '<span class="menu-item-price">Kg fiyatı</span>';
+        }
+
         if ($this->currency === 'USD') {
             $converted = $priceInTry * $this->usdRate;
             return '<span class="menu-item-price"><span class="menu-item-price-symbol">$</span>' . number_format($converted, 2) . '</span>';
