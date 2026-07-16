@@ -29,7 +29,7 @@
 
             <!-- Centered Logo -->
             <div class="absolute inset-0 flex justify-center items-center pointer-events-none z-10">
-                <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), '/') }}" class="pointer-events-auto flex items-center group rounded-full bg-brand-light p-2.5 ring-1 ring-brand/45 shadow-[0_14px_40px_rgba(200,164,93,0.28)]">
+                <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), '/') }}" class="pointer-events-auto flex items-center group rounded-full bg-brand-dark/70 p-2.5 ring-1 ring-brand/55 shadow-[0_14px_40px_rgba(200,164,93,0.28)] backdrop-blur-md">
                     <img src="/logo.png" alt="{{ App\Models\Setting::getValue('site_name', 'Ehl-i Keyf Logo') }}"
                          class="transition-transform duration-500 group-hover:scale-105"
                          style="height: 74px; width: auto; object-fit: contain;">
@@ -77,7 +77,7 @@
 
         <!-- Center: Centered Logo -->
         <div class="absolute inset-0 flex justify-center items-center pointer-events-none z-10">
-            <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), '/') }}" class="pointer-events-auto flex items-center rounded-full bg-brand-light p-2 ring-1 ring-brand/40 shadow-[0_10px_30px_rgba(200,164,93,0.22)]">
+            <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), '/') }}" class="pointer-events-auto flex items-center rounded-full bg-brand-dark/70 p-2 ring-1 ring-brand/50 shadow-[0_10px_30px_rgba(200,164,93,0.22)] backdrop-blur-md">
                 <img src="/logo.png" alt="{{ App\Models\Setting::getValue('site_name', 'Ehl-i Keyf Logo') }}"
                      style="height: 66px; width: auto; object-fit: contain;">
             </a>
