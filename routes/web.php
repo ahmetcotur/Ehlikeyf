@@ -23,16 +23,20 @@ Route::group([
     Route::get('/privacy-policy', \App\Livewire\StaticPage::class)->defaults('slug', 'privacy-policy')->name('privacy-policy');
     Route::get('/terms-of-service', \App\Livewire\StaticPage::class)->defaults('slug', 'terms-of-service')->name('terms-of-service');
 });
-Route::get('/setup-server', function() {
+Route::get('/setup-server', function () {
+    if (!auth()->check()) {
+        abort(403, 'Bu sayfaya erişim yetkiniz yok.');
+    }
+
     try {
         \Illuminate\Support\Facades\Artisan::call('config:clear');
         \Illuminate\Support\Facades\Artisan::call('cache:clear');
         \Illuminate\Support\Facades\Artisan::call('storage:link');
         \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'SettingSeeder']);
-        
+
         $uploadMax = ini_get('upload_max_filesize');
         $postMax = ini_get('post_max_size');
-        
+
         return response()->json([
             'status' => 'success',
             'message' => 'Önbellek temizlendi, Storage Link oluşturuldu ve Ayarlar başarıyla eklendi.',
@@ -43,7 +47,7 @@ Route::get('/setup-server', function() {
     } catch (\Exception $e) {
         return response()->json(['error' => $e->getMessage()]);
     }
-});
+})->middleware(['web'])->name('setup-server');
 // QR Redirect and Scan Tracking
 Route::get('/qr/{id}', function ($id) {
     $qr = \App\Models\QrCode::find($id);

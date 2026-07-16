@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Cache;
 use Spatie\Translatable\HasTranslations;
 
 class Setting extends Model
@@ -14,14 +14,25 @@ class Setting extends Model
 
     public $translatable = ['value'];
 
+    protected static function booted(): void
+    {
+        static::saved(fn () => Cache::forget("settings_all"));
+        static::deleted(fn () => Cache::forget("settings_all"));
+    }
+
     public static function getValue(string $key, $default = null)
     {
-        $setting = self::where('key', $key)->first();
-        if (!$setting) return $default;
+        $setting = self::cachedAll()->get($key);
+
+        if (!$setting) {
+            return $default;
+        }
 
         if ($setting->type === 'image') {
             $val = $setting->value;
-            if (!$val) return $default;
+            if (!$val) {
+                return $default;
+            }
             if (str_starts_with($val, 'http')) {
                 return $val;
             }
@@ -36,10 +47,16 @@ class Setting extends Model
 
         if ($setting->type === 'images') {
             if (is_array($setting->value)) {
-                return array_map(function($img) {
-                    if (str_starts_with($img, 'http')) return $img;
-                    if (file_exists(public_path('storage/' . $img))) return '/storage/' . $img;
-                    if (file_exists(public_path('images/' . $img))) return '/images/' . $img;
+                return array_map(function ($img) {
+                    if (str_starts_with($img, 'http')) {
+                        return $img;
+                    }
+                    if (file_exists(public_path('storage/' . $img))) {
+                        return '/storage/' . $img;
+                    }
+                    if (file_exists(public_path('images/' . $img))) {
+                        return '/images/' . $img;
+                    }
                     return '/storage/' . $img;
                 }, $setting->value);
             }
@@ -47,5 +64,13 @@ class Setting extends Model
         }
 
         return $setting->value ?? $default;
+    }
+
+    /**
+     * Return all settings as a key => Setting collection, cached.
+     */
+    protected static function cachedAll()
+    {
+        return Cache::rememberForever('settings_all', fn () => self::all()->keyBy('key'));
     }
 }
