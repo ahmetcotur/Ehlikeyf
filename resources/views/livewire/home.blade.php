@@ -130,21 +130,8 @@
 
                 @forelse($topCategories as $category)
                     @php
-                        $catSlug = $category->getTranslation('slug', app()->getLocale()) ?: $category->getTranslation('slug', 'en') ?: \Illuminate\Support\Str::slug($category->name);
-                        
-                        // 1. First choice: Use the category's uploaded image
-                        if ($category->image) {
-                            $catImgUrl = str_starts_with($category->image, 'http') ? $category->image : \Illuminate\Support\Facades\Storage::url($category->image);
-                        } else {
-                            // 2. Fallback to Setting if no custom image is uploaded
-                            $catImgUrl = \App\Models\Setting::getValue('menu_snacks_image', asset('storage/gallery/029A7858.webp'));
-                            if(str_contains(strtolower($category->name), 'food') || str_contains(strtolower($category->name), 'main') || str_contains(strtolower($category->name), 'yemek') || str_contains(strtolower($category->name), 'kahvaltı')) {
-                                $catImgUrl = \App\Models\Setting::getValue('menu_restaurant_image', asset('storage/gallery/029A7810.webp'));
-                            }
-                            if(str_contains(strtolower($category->name), 'drink') || str_contains(strtolower($category->name), 'icecek') || str_contains(strtolower($category->name), 'içecek') || str_contains(strtolower($category->name), 'şarap')) {
-                                $catImgUrl = \App\Models\Setting::getValue('menu_drinks_image', asset('storage/gallery/029A7909.webp'));
-                            }
-                        }
+                        $catSlug = $category->getTranslation('slug', app()->getLocale()) ?: $category->getTranslation('slug', 'en');
+                        $catImgUrl = $category->menuCardImageUrl();
                     @endphp
                     <a href="{{ route('menu', ['category' => $catSlug]) }}" wire:navigate class="group w-full block relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 min-h-[160px] md:min-h-[220px]" data-gsap-item>
                         <img src="{{ $catImgUrl }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="{{ $category->name }}">
