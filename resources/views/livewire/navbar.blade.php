@@ -5,8 +5,14 @@
     <div class="hidden md:block max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-24 relative">
 
-            <!-- Left Side: Languages + Home, Menu, Gallery -->
-            <div class="w-[42%] flex items-center space-x-5 lg:space-x-7 text-xs lg:text-[11px] tracking-[0.15em] font-semibold uppercase text-brand-light z-20">
+            <!-- Left Side: Logo + Languages + Home, Menu, Gallery -->
+            <div class="flex items-center space-x-5 lg:space-x-7 text-xs lg:text-[11px] tracking-[0.15em] font-semibold uppercase text-brand-light z-20">
+                <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), '/') }}" class="flex items-center group mr-2">
+                    <img src="/logo.png" alt="{{ App\Models\Setting::getValue('site_name', 'Ehl-i Keyf Logo') }}"
+                         class="transition-transform duration-500 group-hover:scale-105"
+                         style="height: 76px; width: auto; object-fit: contain;">
+                </a>
+
                 <!-- Language Switcher -->
                 <div class="flex items-center space-x-2 mr-4">
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
@@ -27,17 +33,8 @@
                 <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'gallery') }}" class="relative py-2 text-brand-light/85 hover:text-brand transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-brand hover:after:w-full after:transition-all after:duration-300">{{ __('Gallery') }}</a>
             </div>
 
-            <!-- Centered Logo -->
-            <div class="absolute inset-0 flex justify-center items-center pointer-events-none z-10">
-                <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), '/') }}" class="pointer-events-auto flex items-center group rounded-full bg-brand-dark/70 p-2.5 ring-1 ring-brand/55 shadow-[0_14px_40px_rgba(200,164,93,0.28)] backdrop-blur-md">
-                    <img src="/logo.png" alt="{{ App\Models\Setting::getValue('site_name', 'Ehl-i Keyf Logo') }}"
-                         class="transition-transform duration-500 group-hover:scale-105"
-                         style="height: 74px; width: auto; object-fit: contain;">
-                </a>
-            </div>
-
             <!-- Right Side: Blog, Contact + Social + WhatsApp + Reservation Button -->
-            <div class="w-[42%] flex items-center justify-end space-x-4 lg:space-x-5 text-xs lg:text-[11px] tracking-[0.15em] font-semibold uppercase text-brand-light z-20">
+            <div class="flex items-center justify-end space-x-4 lg:space-x-5 text-xs lg:text-[11px] tracking-[0.15em] font-semibold uppercase text-brand-light z-20">
                 <!-- Right Links -->
                 <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'blog') }}" class="relative py-2 text-brand-light/85 hover:text-brand transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-brand hover:after:w-full after:transition-all after:duration-300">{{ __('Blog') }}</a>
                 <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'contact') }}" class="relative py-2 text-brand-light/85 hover:text-brand transition duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-brand hover:after:w-full after:transition-all after:duration-300">{{ __('Contact') }}</a>
@@ -65,23 +62,11 @@
 
     <!-- Mobile Header Layout (Visible only on mobile) -->
     <div class="md:hidden flex justify-between items-center h-20 px-4 relative">
-        <!-- Left: Toggle Hamburger -->
-        <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-light hover:text-brand focus:outline-none transition-colors p-2 z-20">
-            <svg class="h-7 w-7" x-show="!mobileMenuOpen" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg class="h-7 w-7" x-show="mobileMenuOpen" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display:none;">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-
-        <!-- Center: Centered Logo -->
-        <div class="absolute inset-0 flex justify-center items-center pointer-events-none z-10">
-            <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), '/') }}" class="pointer-events-auto flex items-center rounded-full bg-brand-dark/70 p-2 ring-1 ring-brand/50 shadow-[0_10px_30px_rgba(200,164,93,0.22)] backdrop-blur-md">
-                <img src="/logo.png" alt="{{ App\Models\Setting::getValue('site_name', 'Ehl-i Keyf Logo') }}"
-                     style="height: 66px; width: auto; object-fit: contain;">
-            </a>
-        </div>
+        <!-- Left: Logo -->
+        <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), '/') }}" class="flex items-center z-20">
+            <img src="/logo.png" alt="{{ App\Models\Setting::getValue('site_name', 'Ehl-i Keyf Logo') }}"
+                 style="height: 64px; width: auto; object-fit: contain;">
+        </a>
 
         <!-- Right: Mobile Actions -->
         <div class="flex items-center space-x-2 z-20">
@@ -141,6 +126,15 @@
                     </a>
                 </div>
             </div>
+
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-light hover:text-brand focus:outline-none transition-colors p-2 z-20">
+                <svg class="h-7 w-7" x-show="!mobileMenuOpen" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg class="h-7 w-7" x-show="mobileMenuOpen" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display:none;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
     </div>
 
