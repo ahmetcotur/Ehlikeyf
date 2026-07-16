@@ -11,11 +11,11 @@
     --font-serif: 'Cinzel', Georgia, serif;
     --font-accent: 'Playfair Display', Georgia, serif;
 
-    --color-brand-light: #F5F1E6; /* Warm Cream */
-    --color-brand: #A86A34; /* Copper */
-    --color-brand-dark: #2C2E27; /* Deep Charcoal Olive */
-    --color-brand-accent: #8B5E2B; /* Warm Bronze */
-    --color-brand-olive: #5C6448; /* Deep Olive Green */
+    --color-brand-light: #F8F1E7; /* Soft Ivory */
+    --color-brand: #C8A45D; /* Aged Brass */
+    --color-brand-dark: #211A16; /* Espresso Charcoal */
+    --color-brand-accent: #8A3B2F; /* Oxblood Terracotta */
+    --color-brand-olive: #5E4A3F; /* Smoked Taupe */
 }
 
 body {
@@ -32,4 +32,54 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
+}
+
+/* ============================================================
+   GSAP Animation Utilities
+   ============================================================ */
+
+/* Text reveal mask — overflow hidden wrapper */
+.gsap-text-reveal {
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* Parallax containers need overflow hidden */
+.gsap-hero-parallax {
+    overflow: hidden;
+}
+
+/* Prevent FOUC — hide elements before GSAP initializes */
+.gsap-fade-in,
+.gsap-blur-in,
+.gsap-scale-in,
+.gsap-slide-left,
+.gsap-slide-right,
+.gsap-text-reveal {
+    opacity: 0;
+}
+
+/* Stagger group items start hidden */
+[data-gsap-stagger] [data-gsap-item] {
+    opacity: 0;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .gsap-fade-in,
+    .gsap-blur-in,
+    .gsap-scale-in,
+    .gsap-slide-left,
+    .gsap-slide-right,
+    .gsap-text-reveal,
+    [data-gsap-stagger] [data-gsap-item] {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
 }

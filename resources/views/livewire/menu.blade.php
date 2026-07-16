@@ -17,7 +17,7 @@
         overflow: hidden;
         transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
         border: 1px solid rgba(91, 110, 78, 0.12);
-        border-left: 5px solid #D9B04A; /* Brand Gold vertical accent line */
+        border-left: 5px solid #C8A45D; /* Brand Gold vertical accent line */
         box-shadow: 0 8px 24px -6px rgba(91, 110, 78, 0.06);
         position: relative;
         display: flex;
@@ -29,7 +29,7 @@
         box-shadow: 0 16px 36px -8px rgba(91, 110, 78, 0.12);
         transform: translateY(-4px) scale(1.005);
         border-color: rgba(217, 176, 74, 0.4);
-        border-left-color: #5b6e4e; /* Change left accent to brand olive on hover */
+        border-left-color: #5E4A3F; /* Change left accent to brand olive on hover */
     }
     
     .menu-item-img-frame {
@@ -77,7 +77,7 @@
     .menu-item-price {
         font-size: 18px;
         font-weight: 800;
-        color: #D9B04A; /* Premium brand gold */
+        color: #C8A45D; /* Premium brand gold */
         font-family: 'Outfit', system-ui, sans-serif;
         display: inline-flex;
         align-items: baseline;
@@ -95,7 +95,7 @@
     
     .menu-item-desc {
         font-size: 11.5px;
-        color: #606d57; /* Organic warm green-gray tint */
+        color: #5E4A3F; /* Organic warm green-gray tint */
         line-height: 1.5;
         margin-top: 5px;
         display: -webkit-box;
@@ -112,7 +112,7 @@
             flex-direction: column;
             min-height: auto;
             border-left: none;
-            border-top: 5px solid #D9B04A; /* Move accent line to top on mobile */
+            border-top: 5px solid #C8A45D; /* Move accent line to top on mobile */
         }
         .menu-item-img-frame {
             width: calc(100% - 28px);
@@ -127,7 +127,7 @@
     </style>
     
     <!-- SVG Pattern Background -->
-    <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235B6E4E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.1'%3E%3Cpath d='M60 100 C 60 70 45 40 20 20'/%3E%3Cpath d='M60 100 C 65 70 85 40 110 20'/%3E%3Cellipse cx='35' cy='45' rx='10' ry='5' transform='rotate(-35 35 45)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Cellipse cx='45' cy='75' rx='8' ry='4' transform='rotate(-45 45 75)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Cellipse cx='85' cy='45' rx='10' ry='5' transform='rotate(35 85 45)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Cellipse cx='75' cy='75' rx='8' ry='4' transform='rotate(45 75 75)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%235B6E4E'/%3E%3Ccircle cx='55' cy='85' r='3.5' fill='%235B6E4E'/%3E%3C/g%3E%3C/svg%3E'); background-size: 120px 120px;"></div>
+    <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235E4A3F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.1'%3E%3Cpath d='M60 100 C 60 70 45 40 20 20'/%3E%3Cpath d='M60 100 C 65 70 85 40 110 20'/%3E%3Cellipse cx='35' cy='45' rx='10' ry='5' transform='rotate(-35 35 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='45' cy='75' rx='8' ry='4' transform='rotate(-45 45 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='85' cy='45' rx='10' ry='5' transform='rotate(35 85 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='75' cy='75' rx='8' ry='4' transform='rotate(45 75 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%235E4A3F'/%3E%3Ccircle cx='55' cy='85' r='3.5' fill='%235E4A3F'/%3E%3C/g%3E%3C/svg%3E'); background-size: 120px 120px;"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <!-- Currency Toggle (Fixed) -->
@@ -148,10 +148,10 @@
         @if($categories->count() > 0)
             <div class="space-y-12">
                 <!-- Heart System Storytelling Area -->
-                <div class="mb-16 mt-8 p-8 md:p-12 rounded-2xl bg-[#5c6448]/5 border border-[#5c6448]/10 text-center max-w-4xl mx-auto relative overflow-hidden">
+                <div class="gsap-blur-in mb-16 mt-8 p-8 md:p-12 rounded-2xl bg-[#5E4A3F]/5 border border-[#5E4A3F]/10 text-center max-w-4xl mx-auto relative overflow-hidden">
                     <!-- Decorative Elements -->
-                    <div class="absolute top-0 left-0 w-24 h-24 bg-[#5c6448]/5 rounded-br-full"></div>
-                    <div class="absolute bottom-0 right-0 w-24 h-24 bg-[#5c6448]/5 rounded-tl-full"></div>
+                    <div class="absolute top-0 left-0 w-24 h-24 bg-[#5E4A3F]/5 rounded-br-full"></div>
+                    <div class="absolute bottom-0 right-0 w-24 h-24 bg-[#5E4A3F]/5 rounded-tl-full"></div>
                     
                     <div class="relative z-10 flex flex-col items-center">
                         <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center mb-6 text-brand-accent">
@@ -165,13 +165,13 @@
                 </div>
 
                 @if(!$activeCategory)
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center" data-gsap-stagger>
                         @foreach($categories as $category)
                             @php
                                 $catSlug = $category->getTranslation('slug', app()->getLocale()) ?: $category->getTranslation('slug', 'en');
                             @endphp
                             <a href="{{ route('menu', ['category' => $catSlug]) }}" wire:navigate
-                               class="gsap-fade-in group w-full block relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 min-h-[160px] md:min-h-[200px]">
+                               class="group w-full block relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 min-h-[160px] md:min-h-[200px]" data-gsap-item>
                                 @php
                                     // 1. First choice: Use the category's uploaded image
                                     if ($category->image) {
@@ -197,7 +197,7 @@
                     </div>
 
                     <!-- Menu Experience Area -->
-                    <div class="mt-24 text-center max-w-4xl mx-auto px-4 bg-white/50 backdrop-blur-md rounded-3xl p-12 shadow-sm border border-brand-olive/5">
+                    <div class="gsap-fade-in mt-24 text-center max-w-4xl mx-auto px-4 bg-white/50 backdrop-blur-md rounded-3xl p-12 shadow-sm border border-brand-olive/5">
                         <h3 class="gsap-fade-in text-brand-olive font-semibold tracking-[0.2em] uppercase text-sm mb-6">{{ __('A Culinary Journey') }}</h3>
                         <p class="gsap-fade-in text-2xl md:text-3xl font-light text-brand-dark leading-relaxed italic opacity-90 mb-10">
                             "{{ __('Every plate at Ehl-i Keyf tells a story. From the freshest catches of the Mediterranean to our hand-crafted mezze, we invite you to savor the harmony of tradition and modern gastronomy.') }}"
@@ -409,13 +409,13 @@
                                     :class=\"pop ? 'scale-125' : 'scale-100'\" 
                                     class=\"absolute top-2 right-2 px-2 py-2 rounded-full bg-white/70 hover:bg-white/90 backdrop-blur-md transition-colors duration-300 z-10 flex items-center justify-center border border-brand-olive/10 shadow-sm\"
                                 >
-                                    <svg x-show=\"!liked\" class=\"w-3.5 h-3.5 text-[#5b6e4e] transition-transform hover:scale-110\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z\"></path></svg>
+                                    <svg x-show=\"!liked\" class=\"w-3.5 h-3.5 text-[#5E4A3F] transition-transform hover:scale-110\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z\"></path></svg>
                                     <svg x-show=\"liked\" x-cloak class=\"w-3.5 h-3.5 text-brand-accent fill-current animate-heart-pop\" viewBox=\"0 0 24 24\"><path d=\"M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\"/></svg>
-                                    <span x-show=\"likesCount > 0\" x-text=\"likesCount\" x-cloak class=\"text-[#5b6e4e] text-[10px] font-bold ml-1 mt-px inline-block transition-all\" :class=\"pop ? 'animate-heart-pop' : ''\"></span>
+                                    <span x-show=\"likesCount > 0\" x-text=\"likesCount\" x-cloak class=\"text-[#5E4A3F] text-[10px] font-bold ml-1 mt-px inline-block transition-all\" :class=\"pop ? 'animate-heart-pop' : ''\"></span>
                                 </button>";
 
                                 return "
-                                <div wire:key=\"menu-item-{$item->id}\" class=\"gsap-fade-in menu-item-card\">
+                                <div wire:key=\"menu-item-{$item->id}\" class=\"menu-item-card\" data-gsap-item>
                                     <!-- Floating Image Frame -->
                                     <div class=\"menu-item-img-frame\">
                                         {$imageHtml}
@@ -442,7 +442,7 @@
 
                         <!-- Direct Menu Items -->
                         @if($activeCatData->menuItems->count() > 0)
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-16">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-16" data-gsap-stagger>
                                 @foreach($activeCatData->menuItems as $item)
                                     {!! $renderItemCard($item) !!}
                                 @endforeach
@@ -455,14 +455,14 @@
                                 @php
                                     $subcatSlugAnchor = $subcat->getTranslation('slug', app()->getLocale()) ?: $subcat->getTranslation('slug', 'en') ?: Str::slug($subcat->name);
                                 @endphp
-                                <div id="subcat-{{ $subcatSlugAnchor }}" style="scroll-margin-top: 200px; margin-top: 48px; margin-bottom: 24px;">
+                                <div id="subcat-{{ $subcatSlugAnchor }}" class="gsap-fade-in" style="scroll-margin-top: 200px; margin-top: 48px; margin-bottom: 24px;">
                                     <h3 class="text-2xl md:text-3xl font-light text-brand-dark uppercase tracking-[0.25em] flex items-center gap-4">
                                         {{ $subcat->name }}
                                         <span class="flex-grow h-[1px] bg-brand-olive/10"></span>
                                     </h3>
                                 </div>
                                 
-                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-16">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 mb-16" data-gsap-stagger>
                                     @foreach($subcat->menuItems as $item)
                                         {!! $renderItemCard($item) !!}
                                     @endforeach
@@ -507,9 +507,9 @@
         function setActivePill(slug) {
             document.querySelectorAll('.subcat-pill').forEach(function(pill) {
                 if (pill.dataset.subcat === slug) {
-                    pill.style.background = '#5c6448';
+                    pill.style.background = '#5E4A3F';
                     pill.style.color = '#fff';
-                    pill.style.borderColor = '#5c6448';
+                    pill.style.borderColor = '#5E4A3F';
                     if (pill.tagName === 'A') {
                         pill.style.boxShadow = '0 0 0 3px rgba(92,100,72,0.3)';
                     }

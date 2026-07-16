@@ -1,6 +1,6 @@
 <div>
     <!-- Hero Section -->
-    <div class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="gsap-hero-parallax relative h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Image with Overlay -->
         @php
             $heroImages = \App\Models\Setting::getValue('hero_images', [asset('storage/gallery/029A7791.webp')]);
@@ -9,7 +9,7 @@
 
         @if(count($heroImages) > 1)
             <!-- AlpineJS Crossfade Hero Slider -->
-            <div class="absolute inset-0 z-0 bg-brand-dark" x-data="{ currentSlide: 0, total: {{ count($heroImages) }} }" x-init="setInterval(() => { currentSlide = (currentSlide + 1) % total }, 5000)">
+            <div class="gsap-hero-bg absolute inset-0 z-0 bg-brand-dark" x-data="{ currentSlide: 0, total: {{ count($heroImages) }} }" x-init="setInterval(() => { currentSlide = (currentSlide + 1) % total }, 5000)">
                 @foreach($heroImages as $index => $imgUrl)
                     <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
                          x-show="currentSlide === {{ $index }}"
@@ -27,7 +27,7 @@
             </div>
         @else
             <!-- Single Static Hero Background -->
-            <div class="absolute inset-0 z-0">
+            <div class="gsap-hero-bg absolute inset-0 z-0">
                 <img src="{{ $heroImages[0] ?? asset('storage/gallery/DJI_0834-Edit-scaled.webp') }}" class="w-full h-full object-cover origin-center scale-105" alt="Ehl-i Keyf Hero">
                 <div class="absolute inset-0 bg-brand-dark/40 z-10"></div>
             </div>
@@ -87,7 +87,7 @@
 
     <!-- Experience Section (Parallax visual break) -->
     <section class="relative py-40 overflow-hidden flex items-center justify-center">
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-0 gsap-parallax" data-parallax-speed="0.25">
             @php
                 $parallaxImage = \App\Models\Setting::getValue('parallax_image', asset('storage/gallery/029A8012-HDR.webp'));
             @endphp
@@ -103,7 +103,7 @@
     <!-- Brand Pillars Section -->
     <section class="py-24 md:py-32 bg-white text-brand-dark px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-brand/10">
         <!-- SVG Pattern Background -->
-        <div class="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%235B6E4E\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\' opacity=\'0.1\'%3E%3Cpath d=\'M60 100 C 60 70 45 40 20 20\'/%3E%3Cpath d=\'M60 100 C 65 70 85 40 110 20\'/%3E%3Cellipse cx=\'35\' cy=\'45\' rx=\'10\' ry=\'5\' transform=\'rotate(-35 35 45)\' fill=\'%235B6E4E\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'45\' cy=\'75\' rx=\'8\' ry=\'4\' transform=\'rotate(-45 45 75)\' fill=\'%235B6E4E\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'85\' cy=\'45\' rx=\'10\' ry=\'5\' transform=\'rotate(35 85 45)\' fill=\'%235B6E4E\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'75\' cy=\'75\' rx=\'8\' ry=\'4\' transform=\'rotate(45 75 75)\' fill=\'%235B6E4E\' fill-opacity=\'0.2\'/%3E%3Ccircle cx=\'60\' cy=\'60\' r=\'4\' fill=\'%235B6E4E\'/%3E%3Ccircle cx=\'55\' cy=\'85\' r=\'3.5\' fill=\'%235B6E4E\'/%3E%3C/g%3E%3C/svg%3E\'); background-size: 120px 120px;"></div>
+        <div class="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%235E4A3F\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\' opacity=\'0.1\'%3E%3Cpath d=\'M60 100 C 60 70 45 40 20 20\'/%3E%3Cpath d=\'M60 100 C 65 70 85 40 110 20\'/%3E%3Cellipse cx=\'35\' cy=\'45\' rx=\'10\' ry=\'5\' transform=\'rotate(-35 35 45)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'45\' cy=\'75\' rx=\'8\' ry=\'4\' transform=\'rotate(-45 45 75)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'85\' cy=\'45\' rx=\'10\' ry=\'5\' transform=\'rotate(35 85 45)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'75\' cy=\'75\' rx=\'8\' ry=\'4\' transform=\'rotate(45 75 75)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Ccircle cx=\'60\' cy=\'60\' r=\'4\' fill=\'%235E4A3F\'/%3E%3Ccircle cx=\'55\' cy=\'85\' r=\'3.5\' fill=\'%235E4A3F\'/%3E%3C/g%3E%3C/svg%3E\'); background-size: 120px 120px;"></div>
 
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-20">
@@ -111,9 +111,9 @@
                 <h3 class="gsap-fade-in text-3xl md:text-5xl font-serif font-light leading-tight">{{ __('Ehl-i Keyf Deneyimi') }}</h3>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-gsap-stagger>
                 <!-- Pillar 1: Ambiyans -->
-                <div class="gsap-fade-in group bg-brand-light/20 rounded-[2.5rem] p-10 border border-brand/20 hover:border-brand-accent transition-all duration-500 hover:shadow-lg flex flex-col items-center text-center">
+                <div class="group bg-brand-light/20 rounded-[2.5rem] p-10 border border-brand/20 hover:border-brand-accent transition-all duration-500 hover:shadow-lg flex flex-col items-center text-center" data-gsap-item>
                     <div class="w-16 h-16 rounded-full bg-brand-olive/10 flex items-center justify-center text-brand-olive mb-8 group-hover:scale-110 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
                     </div>
@@ -122,7 +122,7 @@
                 </div>
                 
                 <!-- Pillar 2: Lezzet -->
-                <div class="gsap-fade-in group bg-brand-light/20 rounded-[2.5rem] p-10 border border-brand/20 hover:border-brand-accent transition-all duration-500 hover:shadow-lg flex flex-col items-center text-center">
+                <div class="group bg-brand-light/20 rounded-[2.5rem] p-10 border border-brand/20 hover:border-brand-accent transition-all duration-500 hover:shadow-lg flex flex-col items-center text-center" data-gsap-item>
                     <div class="w-16 h-16 rounded-full bg-brand-olive/10 flex items-center justify-center text-brand-olive mb-8 group-hover:scale-110 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.168.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
@@ -131,7 +131,7 @@
                 </div>
                 
                 <!-- Pillar 3: Muhabbet -->
-                <div class="gsap-fade-in group bg-brand-light/20 rounded-[2.5rem] p-10 border border-brand/20 hover:border-brand-accent transition-all duration-500 hover:shadow-lg flex flex-col items-center text-center">
+                <div class="group bg-brand-light/20 rounded-[2.5rem] p-10 border border-brand/20 hover:border-brand-accent transition-all duration-500 hover:shadow-lg flex flex-col items-center text-center" data-gsap-item>
                     <div class="w-16 h-16 rounded-full bg-brand-olive/10 flex items-center justify-center text-brand-olive mb-8 group-hover:scale-110 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </div>
@@ -145,13 +145,13 @@
     <!-- Culinary Excellence -->
     <section class="py-24 md:py-32 bg-white text-brand-dark px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <!-- SVG Pattern Background -->
-        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235B6E4E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.1'%3E%3Cpath d='M60 100 C 60 70 45 40 20 20'/%3E%3Cpath d='M60 100 C 65 70 85 40 110 20'/%3E%3Cellipse cx='35' cy='45' rx='10' ry='5' transform='rotate(-35 35 45)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Cellipse cx='45' cy='75' rx='8' ry='4' transform='rotate(-45 45 75)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Cellipse cx='85' cy='45' rx='10' ry='5' transform='rotate(35 85 45)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Cellipse cx='75' cy='75' rx='8' ry='4' transform='rotate(45 75 75)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%235B6E4E'/%3E%3Ccircle cx='55' cy='85' r='3.5' fill='%235B6E4E'/%3E%3C/g%3E%3C/svg%3E'); background-size: 120px 120px;"></div>
+        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235E4A3F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.1'%3E%3Cpath d='M60 100 C 60 70 45 40 20 20'/%3E%3Cpath d='M60 100 C 65 70 85 40 110 20'/%3E%3Cellipse cx='35' cy='45' rx='10' ry='5' transform='rotate(-35 35 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='45' cy='75' rx='8' ry='4' transform='rotate(-45 45 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='85' cy='45' rx='10' ry='5' transform='rotate(35 85 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='75' cy='75' rx='8' ry='4' transform='rotate(45 75 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%235E4A3F'/%3E%3Ccircle cx='55' cy='85' r='3.5' fill='%235E4A3F'/%3E%3C/g%3E%3C/svg%3E'); background-size: 120px 120px;"></div>
         
         <div class="max-w-7xl mx-auto text-center relative z-10">
             <h2 class="gsap-fade-in text-brand-olive uppercase tracking-[0.2em] text-sm font-semibold mb-4">{{ __('Culinary Excellence') }}</h2>
             <h3 class="gsap-fade-in text-3xl md:text-5xl font-serif font-light leading-tight mb-16">{{ __('Crafted for the Senses') }}</h3>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left" data-gsap-stagger>
                 @php
                     // Get top 3 top-level categories, or fallback to sensible defaults if none found
                     $topCategories = \App\Models\Category::whereNull('parent_id')
@@ -179,7 +179,7 @@
                             }
                         }
                     @endphp
-                    <a href="{{ route('menu', ['category' => $catSlug]) }}" wire:navigate class="gsap-fade-in group w-full block relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 min-h-[160px] md:min-h-[220px]">
+                    <a href="{{ route('menu', ['category' => $catSlug]) }}" wire:navigate class="group w-full block relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 min-h-[160px] md:min-h-[220px]" data-gsap-item>
                         <img src="{{ $catImgUrl }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="{{ $category->name }}">
                         <div class="absolute inset-0 bg-brand-dark/40 group-hover:bg-brand-dark/20 transition-colors duration-500"></div>
                         <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
@@ -204,7 +204,7 @@
     <!-- Reviews Section -->
     <section class="py-24 md:py-32 bg-brand-light text-brand-dark px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <!-- SVG Pattern Background (matching Menu section for continuity) -->
-        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235B6E4E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.1'%3E%3Cpath d='M60 100 C 60 70 45 40 20 20'/%3E%3Cpath d='M60 100 C 65 70 85 40 110 20'/%3E%3Cellipse cx='35' cy='45' rx='10' ry='5' transform='rotate(-35 35 45)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Cellipse cx='45' cy='75' rx='8' ry='4' transform='rotate(-45 45 75)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Cellipse cx='85' cy='45' rx='10' ry='5' transform='rotate(35 85 45)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Cellipse cx='75' cy='75' rx='8' ry='4' transform='rotate(45 75 75)' fill='%235B6E4E' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%235B6E4E'/%3E%3Ccircle cx='55' cy='85' r='3.5' fill='%235B6E4E'/%3E%3C/g%3E%3C/svg%3E'); background-size: 120px 120px;"></div>
+        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235E4A3F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.1'%3E%3Cpath d='M60 100 C 60 70 45 40 20 20'/%3E%3Cpath d='M60 100 C 65 70 85 40 110 20'/%3E%3Cellipse cx='35' cy='45' rx='10' ry='5' transform='rotate(-35 35 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='45' cy='75' rx='8' ry='4' transform='rotate(-45 45 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='85' cy='45' rx='10' ry='5' transform='rotate(35 85 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='75' cy='75' rx='8' ry='4' transform='rotate(45 75 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%235E4A3F'/%3E%3Ccircle cx='55' cy='85' r='3.5' fill='%235E4A3F'/%3E%3C/g%3E%3C/svg%3E'); background-size: 120px 120px;"></div>
 
         <div class="max-w-7xl mx-auto relative z-10 text-center">
 
@@ -287,14 +287,14 @@
                 ['text' => 'İçeriye girdiğiniz andan itibaren müziğin etkisi ve personelin sıcaklığıyla kendinizi tamamen bırakıyorsunuz. Mezeler son derece tazeydi, rakı sofrası tam olması gerektiği gibiydi.', 'author' => 'Ahmet K.', 'date' => 'Temmuz 2025', 'init' => 'AK', 'color' => '#6B8E6B'],
                 ['text' => 'Sakin bir atmosferde muhteşem bir meyhane deneyimi yaşadık. Atom, muhammara ve lakerda inanılmaz lezzetliydi. Servis hızlı ve güler yüzlüydü. Kaş\'a gelenler mutlaka uğrasın.', 'author' => 'Aybike B.', 'date' => 'Ağustos 2025', 'init' => 'AB', 'color' => '#A0845C'],
                 ['text' => 'Kaş\'ta onlarca yere gittik ama Ehl-i Keyf bambaşka. Gün batımında deniz manzarasıyla içilen rakı ve taze meze… Bu deneyimi tarif etmek gerçekten çok zor. Yılın en güzel akşamıydı.', 'author' => 'Zümrüt Z.', 'date' => 'Temmuz 2025', 'init' => 'ZZ', 'color' => '#7B6B5D'],
-                ['text' => 'Hizmet, lezzet ve ambiyans açısından kusursuz. Haydari ve deniz mezeleri son derece tazeydi. Personelin samimiyeti insanı eve dönmüş gibi hissettiriyor.', 'author' => 'Özlem H.', 'date' => 'Haziran 2025', 'init' => 'ÖH', 'color' => '#5B6E4E'],
+                ['text' => 'Hizmet, lezzet ve ambiyans açısından kusursuz. Haydari ve deniz mezeleri son derece tazeydi. Personelin samimiyeti insanı eve dönmüş gibi hissettiriyor.', 'author' => 'Özlem H.', 'date' => 'Haziran 2025', 'init' => 'ÖH', 'color' => '#5E4A3F'],
             ];
             $reviewsRow2 = [
                 ['text' => 'Ehl-i Keyf\'in ambiyansı ve sunumu gerçekten çok özel. Kalamar tava ve ahtapot muhteşemdi. Sofrada hiçbir şey eksik kalmıyor, personel sürekli ilgileniyor. Tatilimizin en güzel anları burada geçti.', 'author' => 'Ridvan Y.', 'date' => 'Ağustos 2025', 'init' => 'RY', 'color' => '#6B8E6B'],
                 ['text' => 'Mükemmel bir meyhane deneyimi. Taze deniz ürünleri, özenle hazırlanmış mezeler ve sıcak servis… Kaş\'ta bu kalitede mekan bulmak gerçekten nadir. Çevremdeki herkese tavsiye ediyorum.', 'author' => 'Merve S.', 'date' => 'Temmuz 2025', 'init' => 'MS', 'color' => '#A0845C'],
                 ['text' => 'Harika atmosfer, lezzetli mezeler ve güler yüzlü personel. Balık çok tazeydi, meyhane kültürünü yaşatıyorlar. Ehl-i Keyf Kaş seyahatimin en değerli anısı oldu.', 'author' => 'Berk T.', 'date' => 'Haziran 2025', 'init' => 'BT', 'color' => '#7B6B5D'],
                 ['text' => 'Haydari, lakerda ve muhammara enfesti. Manzara inanılmaz, müzik mükemmel. Böyle bir meyhanede akşam geçirmek insanı dinlendiriyor ve ruhunu besliyor. Kesinlikle tekrar geleceğiz.', 'author' => 'Selin A.', 'date' => 'Ağustos 2025', 'init' => 'SA', 'color' => '#8B7355'],
-                ['text' => 'Kaş\'ta en doğru tercih Ehl-i Keyf. Menüdeki her şey özenle hazırlanmış, sunum çok şık. Rakı sofrasına yakışır ortam ve misafirperver personel. Gönülden tavsiye ederim.', 'author' => 'Tarık O.', 'date' => 'Temmuz 2025', 'init' => 'TO', 'color' => '#5B6E4E'],
+                ['text' => 'Kaş\'ta en doğru tercih Ehl-i Keyf. Menüdeki her şey özenle hazırlanmış, sunum çok şık. Rakı sofrasına yakışır ortam ve misafirperver personel. Gönülden tavsiye ederim.', 'author' => 'Tarık O.', 'date' => 'Temmuz 2025', 'init' => 'TO', 'color' => '#5E4A3F'],
             ];
             @endphp
 

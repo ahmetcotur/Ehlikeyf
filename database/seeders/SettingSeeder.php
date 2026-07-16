@@ -28,19 +28,19 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'brand_olive',
-                'value' => ['tr' => '#5C6448', 'en' => '#5C6448'],
+                'value' => ['tr' => '#5E4A3F', 'en' => '#5E4A3F'],
                 'type' => 'color',
                 'group' => 'branding',
             ],
             [
                 'key' => 'brand_light',
-                'value' => ['tr' => '#F5F1E6', 'en' => '#F5F1E6'],
+                'value' => ['tr' => '#F8F1E7', 'en' => '#F8F1E7'],
                 'type' => 'color',
                 'group' => 'branding',
             ],
             [
                 'key' => 'brand_dark',
-                'value' => ['tr' => '#2C2E27', 'en' => '#2C2E27'],
+                'value' => ['tr' => '#211A16', 'en' => '#211A16'],
                 'type' => 'color',
                 'group' => 'branding',
             ],
