@@ -157,7 +157,7 @@
                             </div>
 
                             <!-- Submit CTA Button -->
-                            <button type="submit" class="w-full py-4.5 bg-brand text-brand-dark rounded-xl font-bold uppercase tracking-[0.2em] text-xs hover:bg-brand-dark hover:text-white hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 select-none cursor-pointer">
+                            <button type="submit" class="w-full py-4.5 bg-brand text-white rounded-xl font-bold uppercase tracking-[0.2em] text-xs hover:bg-brand-dark hover:text-white hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 select-none cursor-pointer">
                                 <span wire:loading.remove wire:target="submit">{{ __('Send Reservation Request') }}</span>
                                 <span wire:loading wire:target="submit">{{ __('Processing...') }}</span>
                             </button>

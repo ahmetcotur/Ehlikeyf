@@ -17,7 +17,7 @@
         overflow: hidden;
         transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
         border: 1px solid rgba(91, 110, 78, 0.12);
-        border-left: 5px solid #C8A45D; /* Brand Gold vertical accent line */
+        border-left: 5px solid #5C6448; /* Brand accent vertical line */
         box-shadow: 0 8px 24px -6px rgba(91, 110, 78, 0.06);
         position: relative;
         display: flex;
@@ -28,7 +28,7 @@
     .menu-item-card:hover {
         box-shadow: 0 16px 36px -8px rgba(91, 110, 78, 0.12);
         transform: translateY(-4px) scale(1.005);
-        border-color: rgba(217, 176, 74, 0.4);
+        border-color: rgba(92, 100, 72, 0.4);
         border-left-color: #5E4A3F; /* Change left accent to brand olive on hover */
     }
     
@@ -77,7 +77,7 @@
     .menu-item-price {
         font-size: 18px;
         font-weight: 800;
-        color: #C8A45D; /* Premium brand gold */
+        color: #5C6448; /* Premium brand accent */
         font-family: 'Outfit', system-ui, sans-serif;
         display: inline-flex;
         align-items: baseline;
@@ -112,7 +112,7 @@
             flex-direction: column;
             min-height: auto;
             border-left: none;
-            border-top: 5px solid #C8A45D; /* Move accent line to top on mobile */
+            border-top: 5px solid #5C6448; /* Move accent line to top on mobile */
         }
         .menu-item-img-frame {
             width: calc(100% - 28px);

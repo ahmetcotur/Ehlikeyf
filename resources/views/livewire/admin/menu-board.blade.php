@@ -3,8 +3,8 @@
     <style>
         /* Sortable.js States */
         .sortable-ghost {
-            background-color: rgba(217, 176, 74, 0.12) !important;
-            border: 2px dashed #C8A45D !important;
+            background-color: rgba(92, 100, 72, 0.12) !important;
+            border: 2px dashed #5C6448 !important;
             opacity: 0.6 !important;
         }
         .sortable-chosen {
@@ -16,7 +16,7 @@
             transform: scale(1.025) rotate(1.5deg) !important;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.05) !important;
             cursor: grabbing !important;
-            border-color: #C8A45D !important;
+            border-color: #5C6448 !important;
         }
     </style>
 

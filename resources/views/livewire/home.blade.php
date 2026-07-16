@@ -38,7 +38,7 @@
         <!-- Hero Content -->
         <div class="relative z-10 text-center px-4 max-w-6xl mx-auto pt-28">
             <div class="gsap-fade-in premium-glass-panel inline-flex items-center gap-3 rounded-full px-5 py-2 mb-6 text-brand text-[11px] md:text-xs font-semibold uppercase tracking-[0.28em]">
-                <span class="h-1.5 w-1.5 rounded-full bg-brand shadow-[0_0_20px_rgba(200,164,93,0.9)]"></span>
+                <span class="h-1.5 w-1.5 rounded-full bg-brand shadow-[0_0_20px_rgba(92,100,72,0.9)]"></span>
                 {{ __('Welcome to Ehl-i Keyf') }}
             </div>
             <h1 class="gsap-fade-in text-5xl md:text-7xl lg:text-8xl font-serif font-light text-white mb-7 tracking-wide leading-[0.95] uppercase drop-shadow-[0_18px_45px_rgba(0,0,0,0.45)]">
@@ -47,15 +47,16 @@
             <p class="gsap-fade-in text-white/92 max-w-2xl mx-auto mb-10 text-base md:text-xl font-light tracking-wide leading-relaxed drop-shadow">
                 {{ __('Kaş\'ın büyülü atmosferinde, dostlarla kurulan uzun sofraların, iyi müziğin ve lezzetin buluşma noktası.') }}
             </p>
-            <div class="gsap-fade-in flex flex-col sm:flex-row gap-5 justify-center mt-10">
-                <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'menu') }}" class="px-9 py-4 bg-brand text-brand-dark hover:bg-brand-light transition-all duration-300 uppercase tracking-widest text-sm font-bold rounded-full shadow-[0_18px_45px_rgba(200,164,93,0.32)] hover:-translate-y-0.5">
+            <div class="gsap-fade-in mt-8 flex flex-col lg:flex-row items-center justify-center gap-4">
+                <x-tripadvisor-choice-badge compact on-dark class="h-16 w-64 justify-center" />
+                <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'menu') }}" class="inline-flex h-16 w-64 items-center justify-center rounded-full bg-brand px-6 text-center text-sm font-bold uppercase tracking-widest text-white shadow-[0_18px_45px_rgba(92,100,72,0.32)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand-olive">
                     {{ __('Discover Menu') }}
                 </a>
-                 <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'booking') }}" class="px-9 py-4 border border-brand/70 text-brand hover:bg-brand hover:text-brand-dark transition-all duration-300 uppercase tracking-widest text-sm font-bold rounded-full premium-glass-panel hover:-translate-y-0.5">
+                 <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'booking') }}" class="premium-glass-panel inline-flex h-16 w-64 items-center justify-center rounded-full border border-brand/70 px-6 text-center text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-brand hover:text-white">
                     {{ __('Book a Table') }}
                 </a>
             </div>
-            <div class="gsap-fade-in mt-10 flex flex-wrap justify-center gap-3 text-[10px] md:text-xs uppercase tracking-[0.22em] text-white/80">
+            <div class="gsap-fade-in mt-7 flex flex-wrap justify-center gap-3 text-[10px] md:text-xs uppercase tracking-[0.22em] text-white/80">
                 <a href="{{ App\Models\Setting::getValue('google_maps_link', 'https://maps.app.goo.gl/qaEZ8ucy3BTa4GGK6') }}" target="_blank" rel="noopener" class="premium-glass-panel rounded-full px-4 py-2 hover:text-brand transition-colors">Google Maps</a>
                 <a href="{{ App\Models\Setting::getValue('tripadvisor_link', 'https://www.tripadvisor.com.tr/Restaurant_Review-g297965-d4458801-Reviews-Ehl_i_Keyf_Meyhanesi_Kas-Kas_Turkish_Mediterranean_Coast.html') }}" target="_blank" rel="noopener" class="premium-glass-panel rounded-full px-4 py-2 hover:text-brand transition-colors">TripAdvisor</a>
                 <a href="{{ App\Models\Setting::getValue('instagram_link', 'https://www.instagram.com/ehlikeyfmeyhanekas/') }}" target="_blank" rel="noopener" class="premium-glass-panel rounded-full px-4 py-2 hover:text-brand transition-colors">Instagram</a>
@@ -70,8 +71,7 @@
 
     <!-- Brand Pillars Section -->
     <section class="py-20 md:py-24 bg-brand-dark text-brand-light px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-brand/10">
-        <!-- SVG Pattern Background -->
-        <div class="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%235E4A3F\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\' opacity=\'0.1\'%3E%3Cpath d=\'M60 100 C 60 70 45 40 20 20\'/%3E%3Cpath d=\'M60 100 C 65 70 85 40 110 20\'/%3E%3Cellipse cx=\'35\' cy=\'45\' rx=\'10\' ry=\'5\' transform=\'rotate(-35 35 45)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'45\' cy=\'75\' rx=\'8\' ry=\'4\' transform=\'rotate(-45 45 75)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'85\' cy=\'45\' rx=\'10\' ry=\'5\' transform=\'rotate(35 85 45)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'75\' cy=\'75\' rx=\'8\' ry=\'4\' transform=\'rotate(45 75 75)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Ccircle cx=\'60\' cy=\'60\' r=\'4\' fill=\'%235E4A3F\'/%3E%3Ccircle cx=\'55\' cy=\'85\' r=\'3.5\' fill=\'%235E4A3F\'/%3E%3C/g%3E%3C/svg%3E\'); background-size: 120px 120px;"></div>
+        <x-line-art-accents tone="light" />
 
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-14">
@@ -81,7 +81,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-gsap-stagger>
                 <!-- Pillar 1: Ambiyans -->
-                <div class="group bg-brand-light/8 rounded-[2.5rem] p-10 border border-brand/25 hover:border-brand transition-all duration-500 hover:shadow-[0_24px_70px_rgba(200,164,93,0.12)] flex flex-col items-center text-center" data-gsap-item>
+                <div class="group bg-brand-light/8 rounded-[2.5rem] p-10 border border-brand/25 hover:border-brand transition-all duration-500 hover:shadow-[0_24px_70px_rgba(92,100,72,0.12)] flex flex-col items-center text-center" data-gsap-item>
                     <div class="w-16 h-16 rounded-full bg-brand-olive/10 flex items-center justify-center text-brand-olive mb-8 group-hover:scale-110 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
                     </div>
@@ -90,7 +90,7 @@
                 </div>
                 
                 <!-- Pillar 2: Lezzet -->
-                <div class="group bg-brand-light/8 rounded-[2.5rem] p-10 border border-brand/25 hover:border-brand transition-all duration-500 hover:shadow-[0_24px_70px_rgba(200,164,93,0.12)] flex flex-col items-center text-center" data-gsap-item>
+                <div class="group bg-brand-light/8 rounded-[2.5rem] p-10 border border-brand/25 hover:border-brand transition-all duration-500 hover:shadow-[0_24px_70px_rgba(92,100,72,0.12)] flex flex-col items-center text-center" data-gsap-item>
                     <div class="w-16 h-16 rounded-full bg-brand-olive/10 flex items-center justify-center text-brand-olive mb-8 group-hover:scale-110 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.168.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
@@ -99,7 +99,7 @@
                 </div>
                 
                 <!-- Pillar 3: Muhabbet -->
-                <div class="group bg-brand-light/8 rounded-[2.5rem] p-10 border border-brand/25 hover:border-brand transition-all duration-500 hover:shadow-[0_24px_70px_rgba(200,164,93,0.12)] flex flex-col items-center text-center" data-gsap-item>
+                <div class="group bg-brand-light/8 rounded-[2.5rem] p-10 border border-brand/25 hover:border-brand transition-all duration-500 hover:shadow-[0_24px_70px_rgba(92,100,72,0.12)] flex flex-col items-center text-center" data-gsap-item>
                     <div class="w-16 h-16 rounded-full bg-brand-olive/10 flex items-center justify-center text-brand-olive mb-8 group-hover:scale-110 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </div>
@@ -112,8 +112,7 @@
 
     <!-- Culinary Excellence -->
     <section class="py-20 md:py-24 bg-[linear-gradient(180deg,#F8F1E7_0%,#FFFBF4_100%)] text-brand-dark px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <!-- SVG Pattern Background -->
-        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235E4A3F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.1'%3E%3Cpath d='M60 100 C 60 70 45 40 20 20'/%3E%3Cpath d='M60 100 C 65 70 85 40 110 20'/%3E%3Cellipse cx='35' cy='45' rx='10' ry='5' transform='rotate(-35 35 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='45' cy='75' rx='8' ry='4' transform='rotate(-45 45 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='85' cy='45' rx='10' ry='5' transform='rotate(35 85 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='75' cy='75' rx='8' ry='4' transform='rotate(45 75 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%235E4A3F'/%3E%3Ccircle cx='55' cy='85' r='3.5' fill='%235E4A3F'/%3E%3C/g%3E%3C/svg%3E'); background-size: 120px 120px;"></div>
+        <x-line-art-accents />
         
         <div class="max-w-7xl mx-auto text-center relative z-10">
             <h2 class="gsap-fade-in text-brand-olive uppercase tracking-[0.2em] text-sm font-semibold mb-4">{{ __('Culinary Excellence') }}</h2>
@@ -170,8 +169,9 @@
     </section>
 
     <!-- About Section -->
-    <section class="py-24 md:py-32 bg-[linear-gradient(180deg,#F8F1E7_0%,#EFE2D1_100%)] text-brand-dark px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
+    <section class="py-24 md:py-32 bg-[linear-gradient(180deg,#F8F1E7_0%,#EFE2D1_100%)] text-brand-dark px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <x-line-art-accents />
+        <div class="max-w-7xl mx-auto relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                 <div class="order-2 lg:order-1 relative">
                     <div class="gsap-fade-in premium-card p-3 rounded-[2rem]">
@@ -217,8 +217,7 @@
 
     <!-- Reviews Section -->
     <section class="py-24 md:py-32 bg-brand-light text-brand-dark px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <!-- SVG Pattern Background (matching Menu section for continuity) -->
-        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235E4A3F' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' opacity='0.1'%3E%3Cpath d='M60 100 C 60 70 45 40 20 20'/%3E%3Cpath d='M60 100 C 65 70 85 40 110 20'/%3E%3Cellipse cx='35' cy='45' rx='10' ry='5' transform='rotate(-35 35 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='45' cy='75' rx='8' ry='4' transform='rotate(-45 45 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='85' cy='45' rx='10' ry='5' transform='rotate(35 85 45)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Cellipse cx='75' cy='75' rx='8' ry='4' transform='rotate(45 75 75)' fill='%235E4A3F' fill-opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='4' fill='%235E4A3F'/%3E%3Ccircle cx='55' cy='85' r='3.5' fill='%235E4A3F'/%3E%3C/g%3E%3C/svg%3E'); background-size: 120px 120px;"></div>
+        <x-line-art-accents />
 
         <div class="max-w-7xl mx-auto relative z-10 text-center">
             @php
@@ -228,8 +227,8 @@
                 $googleSyncedAt = $googlePlaceSummary?->synced_at;
             @endphp
 
-            {{-- Google Reviews Counter Badge --}}
-            <div class="gsap-fade-in flex flex-col items-center mb-16">
+            {{-- Google + Tripadvisor Social Proof Badges --}}
+            <div class="gsap-fade-in mb-16 flex flex-col lg:flex-row items-center justify-center gap-5">
                 <a href="{{ App\Models\Setting::getValue('google_maps_link', 'https://maps.app.goo.gl/qaEZ8ucy3BTa4GGK6') }}" target="_blank" rel="noopener"
                    class="group inline-flex flex-col items-center gap-4 bg-white/70 backdrop-blur-md border border-white/60 rounded-3xl px-10 py-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1 cursor-pointer">
                     
@@ -254,7 +253,7 @@
                         <div class="flex flex-col items-start pb-2">
                             <div class="flex items-center gap-0.5 mb-1">
                                 @for($i=0; $i<5; $i++)
-                                    <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    <svg class="w-5 h-5 text-brand-accent fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                                 @endfor
                             </div>
                             <span class="text-xs text-gray-400 font-medium tracking-wide">Google Yorumu</span>
@@ -269,6 +268,14 @@
                         <svg class="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </span>
                 </a>
+
+                <div class="group flex flex-col items-center gap-4 bg-white/80 backdrop-blur-md border border-white/70 rounded-3xl px-10 py-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+                    <x-tripadvisor-choice-badge />
+                    <div class="text-center max-w-xs">
+                        <p class="text-2xl md:text-3xl font-serif font-light text-brand-dark leading-tight">Travellers’ Choice 2025</p>
+                        <p class="mt-2 text-sm text-brand-dark/60 font-light leading-relaxed">Ehl-i Keyf Kaş, Tripadvisor misafir değerlendirmeleriyle 2025 Travellers’ Choice ödülüne layık görüldü.</p>
+                    </div>
+                </div>
             </div>
 
             {{-- Counter animation script --}}
@@ -370,7 +377,7 @@
                                     {{-- Header: stars + Google --}}
                                     <div class="flex items-center justify-between">
                                         <div class="flex gap-0.5">
-                                            @for($s=0;$s<($review['rating'] ?? 5);$s++)<svg class="w-4 h-4 fill-current" style="color:#D4A853;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>@endfor
+                                            @for($s=0;$s<($review['rating'] ?? 5);$s++)<svg class="w-4 h-4 fill-current text-brand-accent"  viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>@endfor
                                         </div>
                                         <svg class="w-[52px] h-[18px] opacity-40" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg"><path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/><path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/><path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/><path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/><path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/><path d="M35.29 41.19V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91S16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49-.21z" fill="#4285F4"/></svg>
                                     </div>
@@ -408,7 +415,7 @@
                                 <div class="p-7 flex flex-col gap-4 h-full">
                                     <div class="flex items-center justify-between">
                                         <div class="flex gap-0.5">
-                                            @for($s=0;$s<($review['rating'] ?? 5);$s++)<svg class="w-4 h-4 fill-current" style="color:#D4A853;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>@endfor
+                                            @for($s=0;$s<($review['rating'] ?? 5);$s++)<svg class="w-4 h-4 fill-current text-brand-accent"  viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>@endfor
                                         </div>
                                         <svg class="w-[52px] h-[18px] opacity-40" viewBox="0 0 272 92" xmlns="http://www.w3.org/2000/svg"><path d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#EA4335"/><path d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z" fill="#FBBC05"/><path d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z" fill="#4285F4"/><path d="M225 3v65h-9.5V3h9.5z" fill="#34A853"/><path d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z" fill="#EA4335"/><path d="M35.29 41.19V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91S16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49-.21z" fill="#4285F4"/></svg>
                                     </div>

@@ -12,9 +12,9 @@
     --font-accent: 'Playfair Display', Georgia, serif;
 
     --color-brand-light: #F8F1E7; /* Soft Ivory */
-    --color-brand: #C8A45D; /* Aged Brass */
+    --color-brand: #5C6448; /* Deep Olive */
     --color-brand-dark: #211A16; /* Espresso Charcoal */
-    --color-brand-accent: #8A3B2F; /* Oxblood Terracotta */
+    --color-brand-accent: #5C6448; /* Deep Olive */
     --color-brand-olive: #5E4A3F; /* Smoked Taupe */
 }
 
@@ -32,7 +32,7 @@ body {
 
 .premium-hero-vignette {
     background:
-        radial-gradient(circle at 50% 42%, rgba(200, 164, 93, 0.18), transparent 28%),
+        radial-gradient(circle at 50% 42%, rgba(92, 100, 72, 0.18), transparent 28%),
         linear-gradient(180deg, rgba(33, 26, 22, 0.48) 0%, rgba(33, 26, 22, 0.22) 42%, rgba(33, 26, 22, 0.78) 100%);
 }
 
