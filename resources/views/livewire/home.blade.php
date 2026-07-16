@@ -23,32 +23,42 @@
                         <img src="{{ $imgUrl }}" class="w-full h-full object-cover origin-center scale-105" alt="Ehl-i Keyf Hero">
                     </div>
                 @endforeach
-                <div class="absolute inset-0 bg-brand-dark/40 z-10"></div>
+                <div class="absolute inset-0 bg-brand-dark/55 z-10"></div>
+                <div class="absolute inset-0 premium-hero-vignette z-20"></div>
             </div>
         @else
             <!-- Single Static Hero Background -->
             <div class="gsap-hero-bg absolute inset-0 z-0">
                 <img src="{{ $heroImages[0] ?? asset('storage/gallery/DJI_0834-Edit-scaled.webp') }}" class="w-full h-full object-cover origin-center scale-105" alt="Ehl-i Keyf Hero">
-                <div class="absolute inset-0 bg-brand-dark/40 z-10"></div>
+                <div class="absolute inset-0 bg-brand-dark/55 z-10"></div>
+                <div class="absolute inset-0 premium-hero-vignette z-20"></div>
             </div>
         @endif
         
         <!-- Hero Content -->
-        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto pt-20">
-            <p class="gsap-fade-in text-brand mb-4 md:mb-6 uppercase tracking-[0.3em] text-sm md:text-base font-medium">{{ __('Welcome to Ehl-i Keyf') }}</p>
-            <h1 class="gsap-fade-in text-4xl md:text-6xl lg:text-7xl font-serif font-light text-white mb-6 tracking-wide leading-tight uppercase">
+        <div class="relative z-10 text-center px-4 max-w-6xl mx-auto pt-28">
+            <div class="gsap-fade-in premium-glass-panel inline-flex items-center gap-3 rounded-full px-5 py-2 mb-6 text-brand text-[11px] md:text-xs font-semibold uppercase tracking-[0.28em]">
+                <span class="h-1.5 w-1.5 rounded-full bg-brand shadow-[0_0_20px_rgba(200,164,93,0.9)]"></span>
+                {{ __('Welcome to Ehl-i Keyf') }}
+            </div>
+            <h1 class="gsap-fade-in text-5xl md:text-7xl lg:text-8xl font-serif font-light text-white mb-7 tracking-wide leading-[0.95] uppercase drop-shadow-[0_18px_45px_rgba(0,0,0,0.45)]">
                 {!! __('UZUN SOFRALAR,<br><span class="font-accent italic text-brand font-normal lowercase">güzel muhabbetler</span>') !!}
             </h1>
-            <p class="gsap-fade-in text-white/90 max-w-2xl mx-auto mb-10 text-sm md:text-lg font-light tracking-wide leading-relaxed">
+            <p class="gsap-fade-in text-white/92 max-w-2xl mx-auto mb-10 text-base md:text-xl font-light tracking-wide leading-relaxed drop-shadow">
                 {{ __('Kaş\'ın büyülü atmosferinde, dostlarla kurulan uzun sofraların, iyi müziğin ve lezzetin buluşma noktası.') }}
             </p>
-            <div class="gsap-fade-in flex flex-col sm:flex-row gap-6 justify-center mt-10">
-                <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'menu') }}" class="px-8 py-4 bg-brand text-brand-dark hover:bg-white transition-colors duration-300 uppercase tracking-widest text-sm font-medium rounded-full">
+            <div class="gsap-fade-in flex flex-col sm:flex-row gap-5 justify-center mt-10">
+                <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'menu') }}" class="px-9 py-4 bg-brand text-brand-dark hover:bg-brand-light transition-all duration-300 uppercase tracking-widest text-sm font-bold rounded-full shadow-[0_18px_45px_rgba(200,164,93,0.32)] hover:-translate-y-0.5">
                     {{ __('Discover Menu') }}
                 </a>
-                 <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'booking') }}" class="px-8 py-4 border border-brand text-brand hover:bg-brand hover:text-brand-dark transition-colors duration-300 uppercase tracking-widest text-sm font-medium rounded-full">
+                 <a href="{{ LaravelLocalization::getLocalizedURL(app()->getLocale(), 'booking') }}" class="px-9 py-4 border border-brand/70 text-brand hover:bg-brand hover:text-brand-dark transition-all duration-300 uppercase tracking-widest text-sm font-bold rounded-full premium-glass-panel hover:-translate-y-0.5">
                     {{ __('Book a Table') }}
                 </a>
+            </div>
+            <div class="gsap-fade-in mt-10 flex flex-wrap justify-center gap-3 text-[10px] md:text-xs uppercase tracking-[0.22em] text-white/80">
+                <a href="{{ App\Models\Setting::getValue('google_maps_link', 'https://maps.app.goo.gl/qaEZ8ucy3BTa4GGK6') }}" target="_blank" rel="noopener" class="premium-glass-panel rounded-full px-4 py-2 hover:text-brand transition-colors">Google Maps</a>
+                <a href="{{ App\Models\Setting::getValue('tripadvisor_link', 'https://www.tripadvisor.com.tr/Restaurant_Review-g297965-d4458801-Reviews-Ehl_i_Keyf_Meyhanesi_Kas-Kas_Turkish_Mediterranean_Coast.html') }}" target="_blank" rel="noopener" class="premium-glass-panel rounded-full px-4 py-2 hover:text-brand transition-colors">TripAdvisor</a>
+                <a href="{{ App\Models\Setting::getValue('instagram_link', 'https://www.instagram.com/ehlikeyfmeyhanekas/') }}" target="_blank" rel="noopener" class="premium-glass-panel rounded-full px-4 py-2 hover:text-brand transition-colors">Instagram</a>
             </div>
         </div>
         
@@ -59,15 +69,17 @@
     </div>
 
     <!-- About Section -->
-    <section class="py-24 md:py-32 bg-brand-light text-brand-dark px-4 sm:px-6 lg:px-8">
+    <section class="py-24 md:py-32 bg-[linear-gradient(180deg,#F8F1E7_0%,#EFE2D1_100%)] text-brand-dark px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                 <div class="order-2 lg:order-1 relative">
-                    <div class="gsap-fade-in aspect-[4/5] overflow-hidden rounded-3xl">
-                        <img src="{{ \App\Models\Setting::getValue('story_image', asset('storage/gallery/029A7798.webp')) }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Restaurant Atmosphere">
+                    <div class="gsap-fade-in premium-card p-3 rounded-[2rem]">
+                        <div class="aspect-[4/5] overflow-hidden rounded-[1.45rem]">
+                            <img src="{{ \App\Models\Setting::getValue('story_image', asset('storage/gallery/029A7798.webp')) }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Restaurant Atmosphere">
+                        </div>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2">
+                <div class="order-1 lg:order-2 premium-card rounded-[2rem] p-8 md:p-12">
                     <h2 class="gsap-fade-in text-brand-olive uppercase tracking-[0.2em] text-sm font-semibold mb-6">{{ __('Our Story') }}</h2>
                     <h3 class="gsap-fade-in text-3xl md:text-5xl font-serif font-light leading-tight mb-8">{{ __('A premium Mediterranean tavern experience') }}<br><span class="italic text-brand-accent font-sans">{{ __('in the heart of Kaş') }}</span></h3>
                     <p class="gsap-fade-in text-gray-600 mb-6 leading-relaxed font-light text-lg">
@@ -101,42 +113,42 @@
     </section>
 
     <!-- Brand Pillars Section -->
-    <section class="py-24 md:py-32 bg-white text-brand-dark px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-brand/10">
+    <section class="py-24 md:py-32 bg-brand-dark text-brand-light px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-brand/10">
         <!-- SVG Pattern Background -->
         <div class="absolute inset-0 z-0 opacity-[0.02] pointer-events-none mix-blend-multiply" style="background-image: url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' stroke=\'%235E4A3F\' stroke-width=\'1.5\' stroke-linecap=\'round\' stroke-linejoin=\'round\' opacity=\'0.1\'%3E%3Cpath d=\'M60 100 C 60 70 45 40 20 20\'/%3E%3Cpath d=\'M60 100 C 65 70 85 40 110 20\'/%3E%3Cellipse cx=\'35\' cy=\'45\' rx=\'10\' ry=\'5\' transform=\'rotate(-35 35 45)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'45\' cy=\'75\' rx=\'8\' ry=\'4\' transform=\'rotate(-45 45 75)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'85\' cy=\'45\' rx=\'10\' ry=\'5\' transform=\'rotate(35 85 45)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Cellipse cx=\'75\' cy=\'75\' rx=\'8\' ry=\'4\' transform=\'rotate(45 75 75)\' fill=\'%235E4A3F\' fill-opacity=\'0.2\'/%3E%3Ccircle cx=\'60\' cy=\'60\' r=\'4\' fill=\'%235E4A3F\'/%3E%3Ccircle cx=\'55\' cy=\'85\' r=\'3.5\' fill=\'%235E4A3F\'/%3E%3C/g%3E%3C/svg%3E\'); background-size: 120px 120px;"></div>
 
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-20">
                 <h2 class="gsap-fade-in text-brand-olive uppercase tracking-[0.2em] text-sm font-semibold mb-4">{{ __('Concept') }}</h2>
-                <h3 class="gsap-fade-in text-3xl md:text-5xl font-serif font-light leading-tight">{{ __('Ehl-i Keyf Deneyimi') }}</h3>
+                <h3 class="gsap-fade-in text-3xl md:text-5xl font-serif font-light leading-tight text-brand-light">{{ __('Ehl-i Keyf Deneyimi') }}</h3>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-gsap-stagger>
                 <!-- Pillar 1: Ambiyans -->
-                <div class="group bg-brand-light/20 rounded-[2.5rem] p-10 border border-brand/20 hover:border-brand-accent transition-all duration-500 hover:shadow-lg flex flex-col items-center text-center" data-gsap-item>
+                <div class="group bg-brand-light/8 rounded-[2.5rem] p-10 border border-brand/25 hover:border-brand transition-all duration-500 hover:shadow-[0_24px_70px_rgba(200,164,93,0.12)] flex flex-col items-center text-center" data-gsap-item>
                     <div class="w-16 h-16 rounded-full bg-brand-olive/10 flex items-center justify-center text-brand-olive mb-8 group-hover:scale-110 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"></path></svg>
                     </div>
                     <h4 class="text-2xl font-serif tracking-widest uppercase mb-4">{{ __('Ambiyans') }}</h4>
-                    <p class="text-gray-600 font-light text-base leading-relaxed">{{ __('Kaş\'ın eşsiz zeytin ağaçları ve sıcak ışıkları altında, ruhu dinlendiren büyülü akşam ortamı.') }}</p>
+                    <p class="text-brand-light/70 font-light text-base leading-relaxed">{{ __('Kaş\'ın eşsiz zeytin ağaçları ve sıcak ışıkları altında, ruhu dinlendiren büyülü akşam ortamı.') }}</p>
                 </div>
                 
                 <!-- Pillar 2: Lezzet -->
-                <div class="group bg-brand-light/20 rounded-[2.5rem] p-10 border border-brand/20 hover:border-brand-accent transition-all duration-500 hover:shadow-lg flex flex-col items-center text-center" data-gsap-item>
+                <div class="group bg-brand-light/8 rounded-[2.5rem] p-10 border border-brand/25 hover:border-brand transition-all duration-500 hover:shadow-[0_24px_70px_rgba(200,164,93,0.12)] flex flex-col items-center text-center" data-gsap-item>
                     <div class="w-16 h-16 rounded-full bg-brand-olive/10 flex items-center justify-center text-brand-olive mb-8 group-hover:scale-110 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.168.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     </div>
                     <h4 class="text-2xl font-serif tracking-widest uppercase mb-4">{{ __('Lezzet') }}</h4>
-                    <p class="text-gray-600 font-light text-base leading-relaxed">{{ __('Taze deniz ürünleri, yerel mezeler ve usta şeflerimizin elinden çıkan özgün Akdeniz tatları.') }}</p>
+                    <p class="text-brand-light/70 font-light text-base leading-relaxed">{{ __('Taze deniz ürünleri, yerel mezeler ve usta şeflerimizin elinden çıkan özgün Akdeniz tatları.') }}</p>
                 </div>
                 
                 <!-- Pillar 3: Muhabbet -->
-                <div class="group bg-brand-light/20 rounded-[2.5rem] p-10 border border-brand/20 hover:border-brand-accent transition-all duration-500 hover:shadow-lg flex flex-col items-center text-center" data-gsap-item>
+                <div class="group bg-brand-light/8 rounded-[2.5rem] p-10 border border-brand/25 hover:border-brand transition-all duration-500 hover:shadow-[0_24px_70px_rgba(200,164,93,0.12)] flex flex-col items-center text-center" data-gsap-item>
                     <div class="w-16 h-16 rounded-full bg-brand-olive/10 flex items-center justify-center text-brand-olive mb-8 group-hover:scale-110 transition-transform duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                     </div>
                     <h4 class="text-2xl font-serif tracking-widest uppercase mb-4">{{ __('Muhabbet') }}</h4>
-                    <p class="text-gray-600 font-light text-base leading-relaxed">{{ __('Nostaljik arka plan müzikleri ve dostlarla paylaşılan uzun rakı sofralarında yankılanan eşsiz kahkahalar.') }}</p>
+                    <p class="text-brand-light/70 font-light text-base leading-relaxed">{{ __('Nostaljik arka plan müzikleri ve dostlarla paylaşılan uzun rakı sofralarında yankılanan eşsiz kahkahalar.') }}</p>
                 </div>
             </div>
         </div>

@@ -25,6 +25,30 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+::selection {
+    background: var(--color-brand);
+    color: var(--color-brand-dark);
+}
+
+.premium-hero-vignette {
+    background:
+        radial-gradient(circle at 50% 42%, rgba(200, 164, 93, 0.18), transparent 28%),
+        linear-gradient(180deg, rgba(33, 26, 22, 0.48) 0%, rgba(33, 26, 22, 0.22) 42%, rgba(33, 26, 22, 0.78) 100%);
+}
+
+.premium-glass-panel {
+    background: rgba(248, 241, 231, 0.08);
+    border: 1px solid rgba(248, 241, 231, 0.18);
+    box-shadow: 0 24px 80px rgba(33, 26, 22, 0.28);
+    backdrop-filter: blur(18px) saturate(140%);
+}
+
+.premium-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(248,241,231,0.74));
+    border: 1px solid rgba(94, 74, 63, 0.10);
+    box-shadow: 0 28px 80px rgba(33, 26, 22, 0.08), inset 0 1px 0 rgba(255,255,255,0.68);
+}
+
 .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
