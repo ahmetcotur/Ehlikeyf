@@ -11,11 +11,11 @@
     --font-serif: 'Cinzel', Georgia, serif;
     --font-accent: 'Playfair Display', Georgia, serif;
 
-    --color-brand-light: #F3E6D0; /* Cream */
-    --color-brand: #D9B04A; /* Antique Gold */
-    --color-brand-dark: #3B2B22; /* Dark Wood */
-    --color-brand-accent: #A86A34; /* Copper */
-    --color-brand-olive: #253126; /* Deep Olive Green */
+    --color-brand-light: #F5F1E6; /* Warm Cream */
+    --color-brand: #A86A34; /* Copper */
+    --color-brand-dark: #2C2E27; /* Deep Charcoal Olive */
+    --color-brand-accent: #8B5E2B; /* Warm Bronze */
+    --color-brand-olive: #5C6448; /* Deep Olive Green */
 }
 
 body {

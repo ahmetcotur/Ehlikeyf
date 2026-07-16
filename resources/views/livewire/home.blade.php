@@ -210,7 +210,7 @@
 
             {{-- Google Reviews Counter Badge --}}
             <div class="gsap-fade-in flex flex-col items-center mb-16">
-                <a href="https://maps.app.goo.gl/yRCaaCFpkthAmiBVA" target="_blank" rel="noopener"
+                <a href="{{ App\\Models\\Setting::getValue('google_maps_link', 'https://maps.app.goo.gl/qaEZ8ucy3BTa4GGK6') }}" target="_blank" rel="noopener"
                    class="group inline-flex flex-col items-center gap-4 bg-white/70 backdrop-blur-md border border-white/60 rounded-3xl px-10 py-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1 cursor-pointer">
                     
                     {{-- Google Logo + Verified badge --}}
@@ -449,7 +449,7 @@
             <div class="mt-24 space-y-8">
                 <p class="gsap-fade-in text-brand-dark/60 font-medium uppercase tracking-[0.2em] text-sm">{{ __('Have you visited us?') }}</p>
                 <div class="gsap-fade-in flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://share.google/HEGsvzgZS8fZ8SA4e" target="_blank" class="px-8 py-3 bg-white border border-brand-olive/20 text-brand-olive hover:bg-brand-olive hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-widest rounded-full flex items-center justify-center gap-3">
+                    <a href="{{ App\\Models\\Setting::getValue('google_maps_link', 'https://maps.app.goo.gl/qaEZ8ucy3BTa4GGK6') }}" target="_blank" rel="noopener" class="px-8 py-3 bg-white border border-brand-olive/20 text-brand-olive hover:bg-brand-olive hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-widest rounded-full flex items-center justify-center gap-3">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -458,7 +458,7 @@
                         </svg>
                         {{ __('Review on Google') }}
                     </a>
-                    <a href="https://www.tripadvisor.com.tr/Restaurant_Review-g297965-d4458801-Reviews-Ehl_i_Keyf_Meyhanesi_Kas-Kas_Turkish_Mediterranean_Coast.html" target="_blank" class="px-8 py-3 bg-white border border-brand-olive/20 text-brand-olive hover:bg-brand-olive hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-widest rounded-full flex items-center justify-center gap-3">
+                    <a href="{{ App\\Models\\Setting::getValue('tripadvisor_link', 'https://www.tripadvisor.com.tr/Restaurant_Review-g297965-d4458801-Reviews-Ehl_i_Keyf_Meyhanesi_Kas-Kas_Turkish_Mediterranean_Coast.html') }}" target="_blank" rel="noopener" class="px-8 py-3 bg-white border border-brand-olive/20 text-brand-olive hover:bg-brand-olive hover:text-white transition-all duration-300 text-xs font-bold uppercase tracking-widest rounded-full flex items-center justify-center gap-3">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.006 4.295c-2.67 0-5.338.784-7.645 2.353H0l1.963 2.135a5.997 5.997 0 0 0 4.04 10.43 5.976 5.976 0 0 0 4.075-1.6L12 19.705l1.922-2.09a5.972 5.972 0 0 0 4.072 1.598 6 6 0 0 0 6-5.998 5.982 5.982 0 0 0-1.957-4.432L24 6.648h-4.35a13.573 13.573 0 0 0-7.644-2.353zM12 6.255c1.531 0 3.063.303 4.504.903C13.943 8.138 12 10.43 12 13.1c0-2.671-1.942-4.962-4.504-5.942A11.72 11.72 0 0 1 12 6.256zM6.002 9.157a4.059 4.059 0 1 1 0 8.118 4.059 4.059 0 0 1 0-8.118zm11.992.002a4.057 4.057 0 1 1 .003 8.115 4.057 4.057 0 0 1-.003-8.115zm-11.992 1.93a2.128 2.128 0 0 0 0 4.256 2.128 2.128 0 0 0 0-4.256zm11.992 0a2.128 2.128 0 0 0 0 4.256 2.128 2.128 0 0 0 0-4.256z"/>
                         </svg>

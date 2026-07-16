@@ -14,11 +14,11 @@ dostluk.
 
   Renk               Hex         Kullanım
   ------------------ ----------- ----------------------
-  Deep Olive Green   `#253126`   Header, Footer, Hero
-  Antique Gold       `#D9B04A`   Logo, Buton, Vurgu
-  Cream              `#F3E6D0`   Arka plan
-  Copper             `#A86A34`   Hover, ikonlar
-  Dark Wood          `#3B2B22`   Başlık arka planları
+  Deep Olive Green   `#5C6448`   Header, Footer, Hero
+  Copper             `#A86A34`   Logo, Buton, Vurgu
+  Warm Cream         `#F5F1E6`   Arka plan
+  Warm Bronze        `#8B5E2B`   Hover, ikonlar
+  Deep Charcoal Olive `#2C2E27`  Başlık arka planları
 
 ## Destek
 
@@ -61,12 +61,12 @@ Shadow - Çok hafif - Altın yerine doğal gölge
 
 Primary
 
--   Zemin: #D9B04A
--   Yazı: #253126
+-   Zemin: #A86A34
+-   Yazı: #F5F1E6
 
 Hover
 
--   #C79A37
+-   #8B5E2B
 
 Secondary
 

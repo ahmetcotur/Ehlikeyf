@@ -28,21 +28,47 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'brand_olive',
-                'value' => ['tr' => '#5c6448', 'en' => '#5c6448'],
+                'value' => ['tr' => '#5C6448', 'en' => '#5C6448'],
                 'type' => 'color',
                 'group' => 'branding',
             ],
             [
                 'key' => 'brand_light',
-                'value' => ['tr' => '#f5f1e6', 'en' => '#f5f1e6'],
+                'value' => ['tr' => '#F5F1E6', 'en' => '#F5F1E6'],
                 'type' => 'color',
                 'group' => 'branding',
             ],
             [
                 'key' => 'brand_dark',
-                'value' => ['tr' => '#2c2e27', 'en' => '#2c2e27'],
+                'value' => ['tr' => '#2C2E27', 'en' => '#2C2E27'],
                 'type' => 'color',
                 'group' => 'branding',
+            ],
+
+            // Social Media
+            [
+                'key' => 'google_maps_link',
+                'value' => ['tr' => 'https://maps.app.goo.gl/qaEZ8ucy3BTa4GGK6', 'en' => 'https://maps.app.goo.gl/qaEZ8ucy3BTa4GGK6'],
+                'type' => 'text',
+                'group' => 'social',
+            ],
+            [
+                'key' => 'tripadvisor_link',
+                'value' => ['tr' => 'https://www.tripadvisor.com.tr/Restaurant_Review-g297965-d4458801-Reviews-Ehl_i_Keyf_Meyhanesi_Kas-Kas_Turkish_Mediterranean_Coast.html', 'en' => 'https://www.tripadvisor.com.tr/Restaurant_Review-g297965-d4458801-Reviews-Ehl_i_Keyf_Meyhanesi_Kas-Kas_Turkish_Mediterranean_Coast.html'],
+                'type' => 'text',
+                'group' => 'social',
+            ],
+            [
+                'key' => 'facebook_link',
+                'value' => ['tr' => 'https://www.facebook.com/ehlikeyfmeyhanekas', 'en' => 'https://www.facebook.com/ehlikeyfmeyhanekas'],
+                'type' => 'text',
+                'group' => 'social',
+            ],
+            [
+                'key' => 'instagram_link',
+                'value' => ['tr' => 'https://www.instagram.com/ehlikeyfmeyhanekas/', 'en' => 'https://www.instagram.com/ehlikeyfmeyhanekas/'],
+                'type' => 'text',
+                'group' => 'social',
             ],
 
             // Contact
@@ -64,12 +90,6 @@ class SettingSeeder extends Seeder
                     'tr' => 'Andifli, Hükümet Cd. No:3, 07580 Kaş/Antalya',
                     'en' => 'Andifli, Hükümet Cd. No:3, 07580 Kaş/Antalya'
                 ],
-                'type' => 'text',
-                'group' => 'contact',
-            ],
-            [
-                'key' => 'google_maps_link',
-                'value' => ['tr' => 'https://maps.app.goo.gl/xxx', 'en' => 'https://maps.app.goo.gl/xxx'],
                 'type' => 'text',
                 'group' => 'contact',
             ],

@@ -32,9 +32,9 @@
         
         <style>
             :root {
-                --color-brand-olive: {{ App\Models\Setting::getValue('brand_olive', '#5c6448') }};
-                --color-brand-light: {{ App\Models\Setting::getValue('brand_light', '#f5f1e6') }};
-                --color-brand-dark: {{ App\Models\Setting::getValue('brand_dark', '#2c2e27') }};
+                --color-brand-olive: {{ App\Models\Setting::getValue('brand_olive', '#5C6448') }};
+                --color-brand-light: {{ App\Models\Setting::getValue('brand_light', '#F5F1E6') }};
+                --color-brand-dark: {{ App\Models\Setting::getValue('brand_dark', '#2C2E27') }};
             }
         </style>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
