@@ -41,6 +41,11 @@
                                     {{ App\Models\Setting::getValue('phone', '+90 536 729 22 18') }}
                                 </a>
                             </p>
+                            <p class="text-gray-500 font-light text-sm mt-1">
+                                <a href="tel:{{ str_replace(' ', '', App\Models\Setting::getValue('phone_2', '05537014669')) }}" class="hover:text-brand-accent transition-colors font-medium">
+                                    {{ App\Models\Setting::getValue('phone_2', '0553 701 46 69') }}
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -63,10 +68,16 @@
                     <p class="text-gray-600 font-light text-lg leading-relaxed mb-8">
                         {{ __('Hello! We take reservations on the same day you would like to visit. Simply reach us between 10:00 and 17:00 on the day of your visit, and we will prepare your table for you.') }}
                     </p>
-                    <a href="tel:{{ str_replace(' ', '', App\Models\Setting::getValue('phone', '905367292218')) }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand text-white rounded-xl font-bold uppercase tracking-[0.2em] text-xs hover:bg-brand-dark hover:shadow-lg transition-all duration-300">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                        {{ __('Call Now') }}
-                    </a>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="tel:{{ str_replace(' ', '', App\Models\Setting::getValue('phone', '905367292218')) }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand text-white rounded-xl font-bold uppercase tracking-[0.2em] text-xs hover:bg-brand-dark hover:shadow-lg transition-all duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            {{ App\Models\Setting::getValue('phone', '+90 536 729 22 18') }}
+                        </a>
+                        <a href="tel:{{ str_replace(' ', '', App\Models\Setting::getValue('phone_2', '05537014669')) }}" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-brand text-brand-dark rounded-xl font-bold uppercase tracking-[0.2em] text-xs hover:bg-brand hover:text-white transition-all duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            {{ App\Models\Setting::getValue('phone_2', '0553 701 46 69') }}
+                        </a>
+                    </div>
                 </div>
             </div>
             

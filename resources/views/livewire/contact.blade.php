@@ -14,7 +14,8 @@
                     <div>
                         <h3 class="text-brand-olive uppercase tracking-[0.2em] text-sm font-semibold mb-3">{{ __('Reservations') }}</h3>
                         <p class="text-gray-600 font-light mb-2">{{ __('Book your table for an unforgettable Mediterranean evening.') }}</p>
-                         <a href="tel:{{ str_replace(' ', '', App\Models\Setting::getValue('phone', '905367292218')) }}" class="text-2xl font-medium text-brand-dark hover:text-brand-accent transition-colors">{{ App\Models\Setting::getValue('phone', '+90 536 729 22 18') }}</a>
+                         <a href="tel:{{ str_replace(' ', '', App\Models\Setting::getValue('phone', '905367292218')) }}" class="block text-2xl font-medium text-brand-dark hover:text-brand-accent transition-colors">{{ App\Models\Setting::getValue('phone', '+90 536 729 22 18') }}</a>
+                         <a href="tel:{{ str_replace(' ', '', App\Models\Setting::getValue('phone_2', '05537014669')) }}" class="block text-2xl font-medium text-brand-dark hover:text-brand-accent transition-colors">{{ App\Models\Setting::getValue('phone_2', '0553 701 46 69') }}</a>
                     </div>
                     
                     <div>

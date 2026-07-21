@@ -79,6 +79,12 @@ class SettingSeeder extends Seeder
                 'group' => 'contact',
             ],
             [
+                'key' => 'phone_2',
+                'value' => ['tr' => '0553 701 46 69', 'en' => '0553 701 46 69'],
+                'type' => 'text',
+                'group' => 'contact',
+            ],
+            [
                 'key' => 'whatsapp',
                 'value' => ['tr' => '905367292218', 'en' => '905367292218'],
                 'type' => 'text',
