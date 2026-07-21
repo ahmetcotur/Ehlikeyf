@@ -66,7 +66,7 @@
                 <h3 class="text-brand-olive uppercase tracking-widest text-sm font-semibold mb-6">{{ __('Hours') }}</h3>
                 <div class="text-sm text-gray-600 font-light space-y-2">
                     <p>{{ __('Everyday') }}</p>
-                    <p class="text-brand-olive text-lg font-normal tracking-wider mt-1">14:00 &mdash; 00:00</p>
+                    <p class="text-brand-olive text-lg font-normal tracking-wider mt-1">11:00 &mdash; 02:00</p>
                 </div>
             </div>
         </div>
